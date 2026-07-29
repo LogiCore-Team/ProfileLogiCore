@@ -6,7 +6,8 @@
 }
 
 <main id="main">
-    <section class="project-detail-hero section" aria-labelledby="project-title">
+    <section class="project-detail-hero section brand-hero-page" aria-labelledby="project-title">
+        <div class="hero-grid-pattern" aria-hidden="true"></div>
         <div class="shell">
             <nav class="breadcrumbs reveal" aria-label="Breadcrumb">
                 <a asp-controller="Home" asp-action="Index" data-i18n="navHome">Home</a>
@@ -19,32 +20,32 @@
             <div class="project-detail-grid">
                 <div class="reveal">
                     <p class="eyebrow" data-localized data-en="@Model.Category.English" data-ar="@Model.Category.Arabic">@Model.Category.English</p>
-                    <h1 id="project-title" data-localized data-en="@Model.Title.English" data-ar="@Model.Title.Arabic">@Model.Title.English</h1>
+                    <h1 id="project-title" class="gradient-heading" data-localized data-en="@Model.Title.English" data-ar="@Model.Title.Arabic">@Model.Title.English</h1>
                     <p class="page-lead" data-localized data-en="@Model.Summary.English" data-ar="@Model.Summary.Arabic">@Model.Summary.English</p>
                     <div class="hero-actions">
                         @if (!string.IsNullOrWhiteSpace(Model.LiveDemoUrl))
                         {
-                            <a class="btn primary" href="@Model.LiveDemoUrl" target="_blank" rel="noreferrer" data-i18n="projectDemo">Live Demo</a>
+                            <a class="btn primary btn-hero-primary" href="@Model.LiveDemoUrl" target="_blank" rel="noreferrer" data-i18n="projectDemo">Live Demo</a>
                         }
                         @if (!string.IsNullOrWhiteSpace(Model.RepositoryUrl))
                         {
-                            <a class="btn ghost" href="@Model.RepositoryUrl" target="_blank" rel="noreferrer" data-i18n="projectGithub">Repository</a>
+                            <a class="btn ghost btn-hero-ghost" href="@Model.RepositoryUrl" target="_blank" rel="noreferrer" data-i18n="projectGithub">Repository</a>
                         }
                     </div>
                 </div>
 
-                <dl class="project-facts reveal">
+                <dl class="project-facts reveal glass-card-tech">
                     <div>
-                        <dt data-i18n="projectClient">Client</dt>
+                        <dt data-i18n="projectClient" class="gold-text">Client</dt>
                         <dd>@Model.Client</dd>
                     </div>
                     <div>
-                        <dt data-i18n="projectDuration">Duration</dt>
+                        <dt data-i18n="projectDuration" class="gold-text">Duration</dt>
                         <dd data-localized data-en="@Model.Duration.English" data-ar="@Model.Duration.Arabic">@Model.Duration.English</dd>
                     </div>
                     <div>
-                        <dt data-i18n="projectDelivered">Delivered</dt>
-                        <dd>@Model.Year</dd>
+                        <dt data-i18n="projectDelivered" class="gold-text">Delivered</dt>
+                        <dd class="electric-text">@Model.Year</dd>
                     </div>
                 </dl>
             </div>
@@ -56,10 +57,10 @@
             <div class="gallery-heading reveal">
                 <div>
                     <p class="eyebrow" data-i18n="projectPreviewEyebrow">Interface Preview</p>
-                    <h2 id="gallery-heading" data-i18n="projectPreviewTitle">A closer look at the product experience.</h2>
+                    <h2 id="gallery-heading" class="gradient-heading" data-i18n="projectPreviewTitle">A closer look at the product experience.</h2>
                 </div>
                 <p class="gallery-counter" aria-live="polite">
-                    <span data-gallery-current>01</span>
+                    <span data-gallery-current class="electric-text">01</span>
                     <span>/</span>
                     <span>@Model.Media.Count.ToString("00")</span>
                 </p>
@@ -87,8 +88,8 @@
                                 <span class="mock-chart"></span>
                                 <span class="mock-table"></span>
                             </div>
-                            <figcaption>
-                                <strong data-localized data-en="@media.Title.English" data-ar="@media.Title.Arabic">@media.Title.English</strong>
+                            <figcaption class="glass-card-tech">
+                                <strong class="gold-text" data-localized data-en="@media.Title.English" data-ar="@media.Title.Arabic">@media.Title.English</strong>
                                 <span data-localized data-en="@media.Caption.English" data-ar="@media.Caption.Arabic">@media.Caption.English</span>
                             </figcaption>
                         </figure>
@@ -118,19 +119,19 @@
 
     <section class="section case-study-section">
         <div class="shell case-study-grid">
-            <article class="case-study-block reveal">
-                <span class="case-study-index">01</span>
+            <article class="case-study-block reveal glass-card-tech">
+                <span class="case-study-index gold-text">01</span>
                 <div>
                     <p class="eyebrow" data-i18n="problemEyebrow">The Challenge</p>
-                    <h2 data-i18n="problemTitle">Problem Statement</h2>
+                    <h2 class="gradient-heading" data-i18n="problemTitle">Problem Statement</h2>
                     <p data-localized data-en="@Model.ProblemStatement.English" data-ar="@Model.ProblemStatement.Arabic">@Model.ProblemStatement.English</p>
                 </div>
             </article>
-            <article class="case-study-block reveal">
-                <span class="case-study-index">02</span>
+            <article class="case-study-block reveal glass-card-tech">
+                <span class="case-study-index electric-text">02</span>
                 <div>
                     <p class="eyebrow" data-i18n="solutionEyebrow">The Response</p>
-                    <h2 data-i18n="solutionTitle">Delivered Solution</h2>
+                    <h2 class="gradient-heading" data-i18n="solutionTitle">Delivered Solution</h2>
                     <p data-localized data-en="@Model.DeliveredSolution.English" data-ar="@Model.DeliveredSolution.Arabic">@Model.DeliveredSolution.English</p>
                 </div>
             </article>
@@ -140,13 +141,13 @@
     <section class="section project-features-section" aria-labelledby="features-title">
         <div class="shell section-head reveal">
             <p class="eyebrow" data-i18n="featuresEyebrow">Core Capabilities</p>
-            <h2 id="features-title" data-i18n="featuresTitle">Key features designed around the work.</h2>
+            <h2 id="features-title" class="gradient-heading" data-i18n="featuresTitle">Key features designed around the work.</h2>
         </div>
         <div class="shell feature-grid">
             @foreach (var feature in Model.KeyFeatures)
             {
-                <article class="feature-card reveal">
-                    <span>@feature.Number</span>
+                <article class="feature-card reveal glass-card-tech">
+                    <span class="electric-text">@feature.Number</span>
                     <h3 data-localized data-en="@feature.Title.English" data-ar="@feature.Title.Arabic">@feature.Title.English</h3>
                     <p data-localized data-en="@feature.Description.English" data-ar="@feature.Description.Arabic">@feature.Description.English</p>
                 </article>
@@ -155,16 +156,16 @@
     </section>
 
     <section class="section project-tech-section" aria-labelledby="technology-title">
-        <div class="shell project-tech-panel reveal">
+        <div class="shell project-tech-panel reveal glass-card-tech">
             <div>
                 <p class="eyebrow" data-i18n="technologyUsedEyebrow">Technology Used</p>
-                <h2 id="technology-title" data-i18n="technologyUsedTitle">A dependable stack behind the experience.</h2>
+                <h2 id="technology-title" class="gradient-heading" data-i18n="technologyUsedTitle">A dependable stack behind the experience.</h2>
             </div>
             <div class="project-tech-list">
                 @foreach (var technology in Model.Technologies)
                 {
-                    <article>
-                        <strong>@technology.Name</strong>
+                    <article class="glass-card-tech">
+                        <strong class="gold-text">@technology.Name</strong>
                         <span data-localized data-en="@technology.Note.English" data-ar="@technology.Note.Arabic">@technology.Note.English</span>
                     </article>
                 }
@@ -173,12 +174,12 @@
     </section>
 
     <section class="section project-next-section">
-        <div class="shell project-next reveal">
+        <div class="shell project-next reveal glass-card-tech">
             <div>
                 <p class="eyebrow" data-i18n="exploreMoreEyebrow">Explore More</p>
-                <h2 data-i18n="exploreMoreTitle">See how LOGICORE approaches other product challenges.</h2>
+                <h2 class="gradient-heading" data-i18n="exploreMoreTitle">See how LOGICORE approaches other product challenges.</h2>
             </div>
-            <a class="btn primary" asp-controller="Projects" asp-action="Index" data-i18n="backToProjects">Back to all projects</a>
+            <a class="btn primary btn-hero-primary" asp-controller="Projects" asp-action="Index" data-i18n="backToProjects">Back to all projects</a>
         </div>
     </section>
 </main>
