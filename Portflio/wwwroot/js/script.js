@@ -18,8 +18,8 @@
       navTestimonials: "Testimonials",
       navContact: "Contact",
       heroEyebrow: "Software Engineering Team",
-      heroTitle: "Intelligence-driven software, engineered with mastery.",
-      heroLead: "LOGICORE designs smart systems, modern web products, mobile experiences, and enterprise platforms that scale cleanly.",
+      heroTitle: 'Intelligence-driven <span class="text-gradient-electric">software, engineered</span> with mastery<span class="gold-dot-accent">.</span>',
+      heroLead: "Engineering smart systems, modern web products, mobile experiences, and enterprise platforms that scale cleanly.",
       typingPrefix: "We build",
       heroCtaWork: "Explore Our Work",
       heroCtaContact: "Contact Us",
@@ -27,6 +27,10 @@
       heroChip: "Smart Core",
       heroSignalA: "Reliable delivery",
       heroSignalB: "Fast interfaces",
+      heroFeature1: "Custom Solutions",
+      heroFeature2: "Integrated Security",
+      heroFeature3: "High Performance",
+      heroFeature4: "Scalability",
       aboutEyebrow: "About LOGICORE",
       aboutTitle: "We turn complex business logic into elegant digital products.",
       aboutText: "Our team blends architecture, product thinking, clean interfaces, and reliable engineering to ship systems that teams trust every day.",
@@ -136,8 +140,8 @@
       navTestimonials: "آراء العملاء",
       navContact: "تواصل",
       heroEyebrow: "فريق هندسة برمجيات",
-      heroTitle: "برمجيات ذكية مصممة بإتقان هندسي.",
-      heroLead: "تصمم LOGICORE أنظمة ذكية ومنتجات ويب حديثة وتجارب جوال ومنصات مؤسسية قابلة للتوسع بثبات.",
+      heroTitle: 'برمجيات ذكية <span class="text-gradient-electric">مصممة بإتقان</span> هندسي<span class="gold-dot-accent">.</span>',
+      heroLead: "تصميم أنظمة ذكية ومنتجات ويب حديثة وتجارب جوال ومنصات مؤسسية قابلة للتوسع بثبات.",
       typingPrefix: "نطوّر",
       heroCtaWork: "استكشف أعمالنا",
       heroCtaContact: "تواصل معنا",
@@ -145,6 +149,10 @@
       heroChip: "النواة الذكية",
       heroSignalA: "تسليم موثوق",
       heroSignalB: "واجهات سريعة",
+      heroFeature1: "حلول مخصصة",
+      heroFeature2: "أمان متكامل",
+      heroFeature3: "أداء عالي",
+      heroFeature4: "قابلية للتوسع",
       aboutEyebrow: "عن LOGICORE",
       aboutTitle: "نحوّل منطق الأعمال المعقد إلى منتجات رقمية أنيقة.",
       aboutText: "يمزج فريقنا بين الهندسة المعمارية والتفكير المنتج والواجهات النظيفة والتنفيذ الموثوق لإطلاق أنظمة تعتمد عليها الفرق يومياً.",
@@ -274,6 +282,10 @@
 
     $$("[data-i18n]").forEach((node) => {
       node.textContent = t(node.dataset.i18n);
+    });
+
+    $$("[data-i18n-html]").forEach((node) => {
+      node.innerHTML = t(node.dataset.i18nHtml);
     });
 
     $$("[data-i18n-placeholder]").forEach((node) => {

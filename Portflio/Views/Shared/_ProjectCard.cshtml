@@ -1,6 +1,6 @@
 @model ProjectCardViewModel
 
-<article class="project-card reveal"
+<article class="project-card reveal glass-card-tech"
          data-project-card
          data-category="@Model.CategoryKey">
     <div class="project-thumb project-visual project-visual--@Model.VisualVariant" aria-hidden="true">
@@ -15,17 +15,17 @@
                data-localized
                data-en="@Model.Category.English"
                data-ar="@Model.Category.Arabic">@Model.Category.English</p>
-            <span>@Model.Year</span>
+            <span class="gold-year-badge">@Model.Year</span>
         </div>
         <h3 data-localized data-en="@Model.Title.English" data-ar="@Model.Title.Arabic">@Model.Title.English</h3>
         <p data-localized data-en="@Model.Summary.English" data-ar="@Model.Summary.Arabic">@Model.Summary.English</p>
         <div class="badge-row">
             @foreach (var technology in Model.Technologies)
             {
-                <span class="badge">@technology</span>
+                <span class="badge tech-badge-electric">@technology</span>
             }
         </div>
-        <a class="btn primary"
+        <a class="btn primary btn-hero-primary"
            asp-controller="Projects"
            asp-action="Details"
            asp-route-id="@Model.Id"
