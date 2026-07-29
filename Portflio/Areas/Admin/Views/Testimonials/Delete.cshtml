@@ -1,0 +1,28 @@
+@model Testimonial
+@{
+    ViewData["Title"] = "حذف شهادة العميل";
+}
+
+<div class="admin-page-heading">
+    <div>
+        <h1 class="h3 mb-0">حذف شهادة العميل</h1>
+        <p>راجع البيانات قبل تأكيد الحذف.</p>
+    </div>
+</div>
+
+<div class="admin-card">
+    <div class="alert alert-danger">
+        <strong>هذا الإجراء لا يمكن التراجع عنه.</strong>
+        سيتم حذف شهادة العميل نهائيًا.
+    </div>
+    <dl class="detail-list mb-4">
+        <dt>اسم العميل</dt><dd>@Model.NameAr</dd>
+        <dt>الشركة</dt><dd>@Model.CompanyAr</dd>
+        <dt>التقييم</dt><dd>@Model.Rating من 5</dd>
+        <dt>الشهادة</dt><dd>@Model.QuoteAr</dd>
+    </dl>
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+        <button class="btn btn-danger" type="submit">حذف نهائيًا</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">إلغاء</a>
+    </form>
+</div>

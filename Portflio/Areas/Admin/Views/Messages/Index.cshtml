@@ -1,0 +1,95 @@
+@model IEnumerable<Portflio.Data.Entities.ContactMessage>
+@{
+    ViewData["Title"] = "رسائل التواصل";
+}
+
+<div class="admin-page-heading">
+    <div>
+        <h1 class="h3 mb-0">رسائل التواصل</h1>
+        <p>مراجعة وإدارة الرسائل الواردة من نموذج التواصل في الموقع.</p>
+    </div>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="admin-card text-center text-muted py-5">
+        <i class="bi bi-envelope-open fs-1 text-secondary opacity-50 d-block mb-2"></i>
+        <p class="mb-0 fw-medium">لم تصل أي رسائل حتى الآن.</p>
+    </div>
+}
+else
+{
+    <div class="admin-card p-0 overflow-hidden">
+        <div class="table-responsive">
+            <table class="table admin-table">
+                <thead>
+                    <tr>
+                        <th>التاريخ والوقت</th>
+                        <th>اسم المرسل</th>
+                        <th>البريد الإلكتروني</th>
+                        <th>الموضوع</th>
+                        <th>نص الرسالة</th>
+                        <th>الحالة</th>
+                        <th class="text-end">الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="@(item.IsRead ? "opacity-75" : "fw-bold bg-primary bg-opacity-10")">
+                            <td class="text-nowrap text-muted small">
+                                <i class="bi bi-clock me-1"></i>@item.CreatedAt.ToString("g")
+                            </td>
+                            <td>
+                                <span class="text-dark">@item.Name</span>
+                            </td>
+                            <td>
+                                <a href="mailto:@item.Email" class="text-primary text-decoration-none d-inline-flex align-items-center gap-1">
+                                    <i class="bi bi-envelope"></i>
+                                    <span>@item.Email</span>
+                                </a>
+                            </td>
+                            <td>
+                                <span class="text-dark">@item.Subject</span>
+                            </td>
+                            <td style="max-width: 280px;" class="text-truncate text-muted">
+                                @item.Message
+                            </td>
+                            <td>
+                                @if (item.IsRead)
+                                {
+                                    <span class="badge badge-hidden">
+                                        <i class="bi bi-envelope-open me-1"></i>مقروءة
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-active">
+                                        <i class="bi bi-envelope-fill me-1"></i>جديدة
+                                    </span>
+                                }
+                            </td>
+                            <td class="text-end text-nowrap">
+                                <div class="admin-actions justify-content-end">
+                                    @if (!item.IsRead)
+                                    {
+                                        <form asp-action="MarkAsRead" asp-route-id="@item.Id" method="post" class="d-inline">
+                                            <button type="submit" class="btn-icon btn-icon-success" title="تحديد كمقروءة">
+                                                <i class="bi bi-check2-circle"></i>
+                                            </button>
+                                        </form>
+                                    }
+                                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline" onsubmit="return confirm('هل أنت متأكد من حذف هذه الرسالة؟');">
+                                        <button type="submit" class="btn-icon btn-icon-danger" title="حذف الرسالة">
+                                            <i class="bi bi-trash3"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

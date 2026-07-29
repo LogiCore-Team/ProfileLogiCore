@@ -1,0 +1,83 @@
+@model TeamMember
+@{
+    ViewData["Title"] = "تفاصيل عضو الفريق";
+}
+
+<div class="admin-page-heading">
+    <div><h1 class="h3 mb-0">@Model.NameEn</h1><p dir="rtl">@Model.NameAr</p></div>
+    <div class="admin-actions">
+        <a class="btn btn-primary rounded-3 px-3 py-2 d-inline-flex align-items-center gap-2 shadow-sm" asp-action="Edit" asp-route-id="@Model.Id">
+            <i class="bi bi-pencil-square"></i><span>تعديل الملف</span>
+        </a>
+        <a class="btn btn-outline-secondary rounded-3 px-3 py-2" asp-action="Index">
+            <i class="bi bi-arrow-left me-1"></i>رجوع
+        </a>
+    </div>
+</div>
+
+<div class="detail-card">
+    <div class="admin-card-header">
+        <h2 class="h6 mb-0 text-uppercase tracking-wider text-muted fw-bold">بيانات عضو الفريق</h2>
+    </div>
+    <dl class="detail-list">
+        <dt>الدور بالإنجليزية (EN)</dt><dd class="fw-semibold text-dark" dir="ltr">@Model.RoleEn</dd>
+        <dt>الدور بالعربية (AR)</dt><dd class="fw-semibold text-dark">@Model.RoleAr</dd>
+        <dt>قائمة المهارات</dt>
+        <dd>
+            @if (!string.IsNullOrWhiteSpace(Model.SkillsCsv))
+            {
+                <div class="d-flex flex-wrap gap-1">
+                    @foreach (var skill in Model.SkillsCsv.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+                    {
+                        <span class="badge bg-light text-dark border">@skill</span>
+                    }
+                </div>
+            }
+            else
+            {
+                <span class="text-muted">—</span>
+            }
+        </dd>
+        <dt>رابط الصورة الشخصية</dt>
+        <dd>
+            @if (!string.IsNullOrWhiteSpace(Model.ProfileImageUrl))
+            {
+                <a href="@Model.ProfileImageUrl" target="_blank" class="text-primary text-break"><i class="bi bi-image me-1"></i>@Model.ProfileImageUrl</a>
+            }
+            else
+            {
+                <span class="text-muted">—</span>
+            }
+        </dd>
+        <dt>رابط GitHub</dt>
+        <dd>
+            @if (!string.IsNullOrWhiteSpace(Model.GitHubUrl))
+            {
+                <a href="@Model.GitHubUrl" target="_blank" class="text-primary text-break"><i class="bi bi-github me-1"></i>@Model.GitHubUrl</a>
+            }
+            else
+            {
+                <span class="text-muted">—</span>
+            }
+        </dd>
+        <dt>رابط LinkedIn</dt>
+        <dd>
+            @if (!string.IsNullOrWhiteSpace(Model.LinkedInUrl))
+            {
+                <a href="@Model.LinkedInUrl" target="_blank" class="text-primary text-break"><i class="bi bi-linkedin me-1"></i>@Model.LinkedInUrl</a>
+            }
+            else
+            {
+                <span class="text-muted">—</span>
+            }
+        </dd>
+        <dt>ترتيب العرض</dt><dd><span class="badge bg-light text-dark border">#@Model.DisplayOrder</span></dd>
+        <dt>الحالة</dt>
+        <dd>
+            <span class="badge badge-pill @(Model.IsActive ? "badge-active" : "badge-hidden")">
+                <i class="bi @(Model.IsActive ? "bi-check-circle-fill" : "bi-eye-slash-fill") me-1"></i>
+                @(Model.IsActive ? "نشط" : "مخفي")
+            </span>
+        </dd>
+    </dl>
+</div>

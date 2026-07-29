@@ -1,0 +1,7 @@
+namespace Portflio.Data.Entities;
+
+public enum MediaType
+{
+    Image = 1,
+    Video = 2
+}

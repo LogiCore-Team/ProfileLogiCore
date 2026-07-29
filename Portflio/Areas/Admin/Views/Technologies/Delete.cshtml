@@ -1,0 +1,33 @@
+@model Technology
+@{
+    ViewData["Title"] = "حذف التقنية";
+}
+
+<div class="admin-page-heading">
+    <div>
+        <h1 class="h3 mb-0 text-danger">حذف التقنية</h1>
+        <p>راجع روابط المشاريع قبل تأكيد الحذف.</p>
+    </div>
+</div>
+
+<div class="admin-card max-width-700">
+    <div class="alert alert-danger border-0 shadow-sm rounded-3 d-flex align-items-center gap-3 p-3 mb-4">
+        <i class="bi bi-exclamation-triangle-fill fs-3 text-danger flex-shrink-0"></i>
+        <div>
+            <strong class="d-block mb-1">هذا الإجراء لا يمكن التراجع عنه.</strong>
+            <span>سيتم أيضًا حذف <strong>@Model.ProjectTechnologies.Count رابط مشروع</strong>. لن تُحذف المشاريع نفسها.</span>
+        </div>
+    </div>
+
+    <dl class="detail-list mb-4 bg-light p-3 rounded-3 border">
+        <dt>اسم التقنية</dt><dd class="fw-bold text-dark">@Model.Name</dd>
+        <dt>المشاريع المرتبطة</dt><dd><span class="badge badge-tech">@Model.ProjectTechnologies.Count</span></dd>
+    </dl>
+
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-flex gap-2">
+        <button type="submit" class="btn btn-danger px-4 py-2 rounded-3 fw-semibold shadow-sm">
+            <i class="bi bi-trash3 me-1"></i>حذف نهائي
+        </button>
+        <a class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold" asp-action="Index">إلغاء</a>
+    </form>
+</div>

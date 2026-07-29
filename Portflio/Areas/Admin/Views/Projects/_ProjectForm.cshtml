@@ -1,0 +1,318 @@
+@model ProjectFormViewModel
+
+<div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+<section class="admin-form-section">
+    <div class="admin-form-section-title">
+        <i class="bi bi-info-circle-fill"></i>
+        <span>المعلومات الأساسية</span>
+    </div>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="TitleEn" class="form-label">عنوان المشروع بالإنجليزية (EN)</label>
+            <input asp-for="TitleEn" class="form-control" dir="ltr" placeholder="مثال: Enterprise E-Commerce Platform" />
+            <span asp-validation-for="TitleEn" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6" dir="rtl">
+            <label asp-for="TitleAr" class="form-label">عنوان المشروع بالعربية (AR)</label>
+            <input asp-for="TitleAr" class="form-control" placeholder="مثال: منصة التجارة الإلكترونية" />
+            <span asp-validation-for="TitleAr" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="ClientName" class="form-label">اسم العميل</label>
+            <input asp-for="ClientName" class="form-control" placeholder="مثال: شركة العميل" />
+            <span asp-validation-for="ClientName" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Category" class="form-label">التصنيف</label>
+            <input asp-for="Category" class="form-control" placeholder="web, mobile, enterprise..." dir="ltr" />
+            <span asp-validation-for="Category" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-12">
+            <div class="form-check p-3 border rounded-3 bg-light bg-opacity-50">
+                <input asp-for="IsFeatured" class="form-check-input ms-0 me-2" />
+                <label asp-for="IsFeatured" class="form-check-label fw-semibold text-dark">مشروع مميز</label>
+                <small class="d-block text-muted ms-4">عرض المشروع ضمن قسم المشاريع المميزة في الصفحة الرئيسية.</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="admin-form-section">
+    <div class="admin-form-section-title">
+        <i class="bi bi-text-paragraph"></i>
+        <span>الوصف باللغتين</span>
+    </div>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="ShortDescriptionEn" class="form-label">الوصف المختصر بالإنجليزية (EN)</label>
+            <textarea asp-for="ShortDescriptionEn" class="form-control" rows="3" dir="ltr" placeholder="ملخص قصير باللغة الإنجليزية..."></textarea>
+            <span asp-validation-for="ShortDescriptionEn" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6" dir="rtl">
+            <label asp-for="ShortDescriptionAr" class="form-label">الوصف المختصر بالعربية (AR)</label>
+            <textarea asp-for="ShortDescriptionAr" class="form-control" rows="3" placeholder="ملخص قصير باللغة العربية..."></textarea>
+            <span asp-validation-for="ShortDescriptionAr" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="FullDescriptionEn" class="form-label">الوصف الكامل بالإنجليزية (EN)</label>
+            <textarea asp-for="FullDescriptionEn" class="form-control" rows="7" dir="ltr" placeholder="وصف تفصيلي باللغة الإنجليزية..."></textarea>
+            <span asp-validation-for="FullDescriptionEn" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6" dir="rtl">
+            <label asp-for="FullDescriptionAr" class="form-label">الوصف الكامل بالعربية (AR)</label>
+            <textarea asp-for="FullDescriptionAr" class="form-control" rows="7" placeholder="وصف تفصيلي شامل لدراسة الحالة..."></textarea>
+            <span asp-validation-for="FullDescriptionAr" class="text-danger small ms-1"></span>
+        </div>
+    </div>
+</section>
+
+<section class="admin-form-section">
+    <div class="admin-form-section-title">
+        <i class="bi bi-link-45deg"></i>
+        <span>الروابط وصورة الغلاف</span>
+    </div>
+    <div class="row g-3">
+        <div class="col-12">
+            <label asp-for="CoverImageUrl" class="form-label">رابط صورة الغلاف</label>
+            <input asp-for="CoverImageUrl" class="form-control" dir="ltr" placeholder="https://..." />
+            <span asp-validation-for="CoverImageUrl" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="LiveDemoUrl" class="form-label">رابط العرض المباشر</label>
+            <input asp-for="LiveDemoUrl" class="form-control" dir="ltr" placeholder="https://demo.example.com" />
+            <span asp-validation-for="LiveDemoUrl" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="RepoUrl" class="form-label">رابط المستودع</label>
+            <input asp-for="RepoUrl" class="form-control" dir="ltr" placeholder="https://github.com/..." />
+            <span asp-validation-for="RepoUrl" class="text-danger small ms-1"></span>
+        </div>
+    </div>
+</section>
+
+<section class="admin-form-section">
+    <div class="admin-form-section-title">
+        <i class="bi bi-cpu-fill"></i>
+        <span>التقنيات المرتبطة</span>
+    </div>
+    <span asp-validation-for="SelectedTechnologyIds" class="text-danger d-block mb-2"></span>
+    @if (Model.AvailableTechnologies.Count == 0)
+    {
+        <p class="text-muted mb-0 p-3 bg-light rounded-3 text-center">
+            لا توجد تقنيات متاحة حتى الآن.
+            <a asp-controller="Technologies" asp-action="Create" class="fw-semibold text-primary">أضف تقنية أولًا</a>.
+        </p>
+    }
+    else
+    {
+        <div class="row g-2">
+            @foreach (var technology in Model.AvailableTechnologies)
+            {
+                var isSelected = Model.SelectedTechnologyIds.Contains(technology.Id);
+                <div class="col-sm-6 col-lg-4">
+                    <label class="form-check border rounded p-3 ps-5 h-100">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               name="SelectedTechnologyIds"
+                               value="@technology.Id"
+                               checked="@isSelected" />
+                        <span class="form-check-label">@technology.Name</span>
+                    </label>
+                </div>
+            }
+        </div>
+    }
+</section>
+
+<section class="admin-form-section">
+    <div class="d-flex align-items-center justify-content-between gap-3 mb-3 pb-2 border-bottom">
+        <div class="admin-form-section-title mb-0 border-bottom-0 pb-0">
+            <i class="bi bi-list-check"></i>
+            <span>ميزات المشروع</span>
+        </div>
+        <button class="btn btn-sm btn-outline-primary rounded-3 px-3 py-1.5 d-inline-flex align-items-center gap-1" type="button" data-add-feature>
+            <i class="bi bi-plus-lg"></i>
+            <span>إضافة ميزة</span>
+        </button>
+    </div>
+    <div data-feature-list>
+        @for (var index = 0; index < Model.Features.Count; index++)
+        {
+            <div class="nested-item" data-nested-item>
+                <input type="hidden" name="Features.Index" value="@index" />
+                <input asp-for="Features[index].Id" type="hidden" />
+                <div class="row g-3">
+                    <div class="col-lg-5">
+                        <label asp-for="Features[index].FeatureTextEn" class="form-label">الميزة بالإنجليزية (EN)</label>
+                        <input asp-for="Features[index].FeatureTextEn" class="form-control" dir="ltr" />
+                        <span asp-validation-for="Features[index].FeatureTextEn" class="text-danger small"></span>
+                    </div>
+                    <div class="col-lg-5" dir="rtl">
+                        <label asp-for="Features[index].FeatureTextAr" class="form-label">الميزة بالعربية (AR)</label>
+                        <input asp-for="Features[index].FeatureTextAr" class="form-control" />
+                        <span asp-validation-for="Features[index].FeatureTextAr" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-8 col-lg-1">
+                        <label asp-for="Features[index].DisplayOrder" class="form-label">الترتيب</label>
+                        <input asp-for="Features[index].DisplayOrder" class="form-control" min="0" />
+                    </div>
+                    <div class="col-sm-4 col-lg-1 d-flex align-items-end">
+                        <button class="btn btn-outline-danger w-100 rounded-3" type="button" data-remove-item aria-label="حذف الميزة">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<section class="admin-form-section">
+    <div class="d-flex align-items-center justify-content-between gap-3 mb-3 pb-2 border-bottom">
+        <div class="admin-form-section-title mb-0 border-bottom-0 pb-0">
+            <i class="bi bi-images"></i>
+            <span>معرض الصور والوسائط</span>
+        </div>
+        <button class="btn btn-sm btn-outline-primary rounded-3 px-3 py-1.5 d-inline-flex align-items-center gap-1" type="button" data-add-media>
+            <i class="bi bi-plus-lg"></i>
+            <span>إضافة وسيط</span>
+        </button>
+    </div>
+    <div data-media-list>
+        @for (var index = 0; index < Model.Media.Count; index++)
+        {
+            <div class="nested-item" data-nested-item>
+                <input type="hidden" name="Media.Index" value="@index" />
+                <input asp-for="Media[index].Id" type="hidden" />
+                <div class="row g-3">
+                    <div class="col-lg-6">
+                        <label asp-for="Media[index].MediaUrl" class="form-label">رابط الوسيط</label>
+                        <input asp-for="Media[index].MediaUrl" class="form-control" dir="ltr" />
+                        <span asp-validation-for="Media[index].MediaUrl" class="text-danger small"></span>
+                    </div>
+                    <div class="col-sm-5 col-lg-3">
+                        <label asp-for="Media[index].MediaType" class="form-label">نوع الوسيط</label>
+                        <select asp-for="Media[index].MediaType"
+                                asp-items="Html.GetEnumSelectList<MediaType>()"
+                                class="form-select"></select>
+                    </div>
+                    <div class="col-sm-5 col-lg-2">
+                        <label asp-for="Media[index].DisplayOrder" class="form-label">الترتيب</label>
+                        <input asp-for="Media[index].DisplayOrder" class="form-control" min="0" />
+                    </div>
+                    <div class="col-sm-2 col-lg-1 d-flex align-items-end">
+                        <button class="btn btn-outline-danger w-100 rounded-3" type="button" data-remove-item aria-label="حذف الوسيط">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<div class="d-flex flex-wrap gap-2 mt-4">
+    <button type="submit" class="btn btn-primary px-4 py-2 rounded-3 fw-semibold shadow-sm d-inline-flex align-items-center gap-2">
+        <i class="bi bi-check-lg"></i>
+        <span>حفظ المشروع</span>
+    </button>
+    <a class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold" asp-action="Index">إلغاء</a>
+</div>
+
+<template id="feature-template">
+    <div class="nested-item" data-nested-item>
+        <input type="hidden" name="Features.Index" value="__index__" />
+        <div class="row g-3">
+            <div class="col-lg-5">
+                <label class="form-label" for="Features___index___FeatureTextEn">الميزة بالإنجليزية (EN)</label>
+                <input class="form-control" id="Features___index___FeatureTextEn"
+                       name="Features[__index__].FeatureTextEn"
+                       data-val="true" data-val-required="الميزة بالإنجليزية مطلوبة."
+                       data-val-length="يجب ألا يتجاوز النص 500 حرف."
+                       data-val-length-max="500" />
+                <span class="text-danger field-validation-valid"
+                      data-valmsg-for="Features[__index__].FeatureTextEn"
+                      data-valmsg-replace="true"></span>
+            </div>
+            <div class="col-lg-5" dir="rtl">
+                <label class="form-label" for="Features___index___FeatureTextAr">الميزة بالعربية (AR)</label>
+                <input class="form-control" id="Features___index___FeatureTextAr"
+                       name="Features[__index__].FeatureTextAr"
+                       data-val="true" data-val-required="الميزة بالعربية مطلوبة."
+                       data-val-length="يجب ألا يتجاوز النص 500 حرف."
+                       data-val-length-max="500" />
+                <span class="text-danger field-validation-valid"
+                      data-valmsg-for="Features[__index__].FeatureTextAr"
+                      data-valmsg-replace="true"></span>
+            </div>
+            <div class="col-sm-8 col-lg-1">
+                <label class="form-label" for="Features___index___DisplayOrder">الترتيب</label>
+                <input class="form-control" id="Features___index___DisplayOrder"
+                       name="Features[__index__].DisplayOrder" type="number" min="0" value="0" />
+            </div>
+            <div class="col-sm-4 col-lg-1 d-flex align-items-end">
+                <button class="btn btn-outline-danger w-100" type="button" data-remove-item aria-label="Remove feature">×</button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="media-template">
+    <div class="nested-item" data-nested-item>
+        <input type="hidden" name="Media.Index" value="__index__" />
+        <div class="row g-3">
+            <div class="col-lg-6">
+                <label class="form-label" for="Media___index___MediaUrl">رابط الوسيط</label>
+                <input class="form-control" id="Media___index___MediaUrl"
+                       name="Media[__index__].MediaUrl"
+                       data-val="true" data-val-required="رابط الوسيط مطلوب."
+                       data-val-url="رابط الوسيط غير صالح." />
+                <span class="text-danger field-validation-valid"
+                      data-valmsg-for="Media[__index__].MediaUrl"
+                      data-valmsg-replace="true"></span>
+            </div>
+            <div class="col-sm-5 col-lg-3">
+                <label class="form-label" for="Media___index___MediaType">نوع الوسيط</label>
+                <select class="form-select" id="Media___index___MediaType" name="Media[__index__].MediaType">
+                    <option value="1">صورة</option>
+                    <option value="2">فيديو</option>
+                </select>
+            </div>
+            <div class="col-sm-5 col-lg-2">
+                <label class="form-label" for="Media___index___DisplayOrder">الترتيب</label>
+                <input class="form-control" id="Media___index___DisplayOrder"
+                       name="Media[__index__].DisplayOrder" type="number" min="0" value="0" />
+            </div>
+            <div class="col-sm-2 col-lg-1 d-flex align-items-end">
+                <button class="btn btn-outline-danger w-100" type="button" data-remove-item aria-label="Remove media">×</button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    (() => {
+        let sequence = 0;
+        const addFromTemplate = (templateId, listSelector, prefix) => {
+            const template = document.getElementById(templateId);
+            const token = `${prefix}-${Date.now()}-${sequence++}`;
+            const wrapper = document.createElement("div");
+            wrapper.innerHTML = template.innerHTML.replaceAll("__index__", token);
+            const item = wrapper.firstElementChild;
+            document.querySelector(listSelector).appendChild(item);
+            if (window.jQuery?.validator?.unobtrusive) {
+                window.jQuery.validator.unobtrusive.parse(item);
+            }
+        };
+
+        document.querySelector("[data-add-feature]")?.addEventListener("click", () =>
+            addFromTemplate("feature-template", "[data-feature-list]", "feature"));
+        document.querySelector("[data-add-media]")?.addEventListener("click", () =>
+            addFromTemplate("media-template", "[data-media-list]", "media"));
+        document.addEventListener("click", event => {
+            const button = event.target.closest("[data-remove-item]");
+            button?.closest("[data-nested-item]")?.remove();
+        });
+    })();
+</script>

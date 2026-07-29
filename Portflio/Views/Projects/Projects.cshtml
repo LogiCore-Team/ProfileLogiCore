@@ -1,0 +1,83 @@
+@model ProjectsPageViewModel
+@{
+    ViewData["Title"] = "Our Projects";
+    ViewData["Description"] = "Explore LOGICORE web, mobile, intelligent systems, and enterprise software projects.";
+    ViewData["Page"] = "projects";
+}
+
+<main id="main">
+    <section class="page-hero section" aria-labelledby="projects-page-title">
+        <div class="page-hero-grid shell">
+            <div class="reveal">
+                <nav class="breadcrumbs" aria-label="Breadcrumb">
+                    <a asp-controller="Home" asp-action="Index" data-i18n="navHome">Home</a>
+                    <span aria-hidden="true">/</span>
+                    <span data-i18n="projectsBreadcrumb">Projects</span>
+                </nav>
+                <p class="eyebrow" data-i18n="portfolioEyebrow">Portfolio</p>
+                <h1 id="projects-page-title" data-i18n="projectsPageTitle">Digital products built for real operational momentum.</h1>
+                <p class="page-lead" data-i18n="projectsPageIntro">Explore the systems LOGICORE has shaped across customer experiences, field operations, intelligent automation, and enterprise platforms.</p>
+            </div>
+            <div class="page-hero-signal reveal" aria-hidden="true">
+                <span class="signal-index">@Model.Projects.Count</span>
+                <span class="signal-label">CASE STUDIES</span>
+                <div class="signal-bars"><i></i><i></i><i></i><i></i></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section projects-gallery-section" aria-labelledby="gallery-title">
+        <div class="shell section-head projects-gallery-head reveal">
+            <div>
+                <p class="eyebrow" data-i18n="projectsCollection">Project Collection</p>
+                <h2 id="gallery-title" data-i18n="projectsGalleryTitle">Find the work most relevant to your next build.</h2>
+            </div>
+            <p class="results-count">
+                <strong data-results-count>@Model.Projects.Count</strong>
+                <span data-i18n="projectsShown">projects shown</span>
+            </p>
+        </div>
+
+        <div class="shell filter-bar reveal"
+             data-filter-controls="projects"
+             data-selected-filter="@Model.SelectedCategory"
+             aria-label="Project filters">
+            <button type="button"
+                    class="@(Model.SelectedCategory == "all" ? "active" : null)"
+                    data-filter="all"
+                    aria-pressed="@(Model.SelectedCategory == "all" ? "true" : "false")"
+                    data-i18n="all">All</button>
+            @foreach (var category in Model.Categories)
+            {
+                <button type="button"
+                        class="@(Model.SelectedCategory == category.Key ? "active" : null)"
+                        data-filter="@category.Key"
+                        aria-pressed="@(Model.SelectedCategory == category.Key ? "true" : "false")"
+                        data-localized
+                        data-en="@category.Label.English"
+                        data-ar="@category.Label.Arabic">@category.Label.English</button>
+            }
+        </div>
+
+        <div class="shell card-grid projects-page-grid" data-projects data-filter-grid="projects">
+            @foreach (var project in Model.Projects)
+            {
+                <partial name="_ProjectCard" model="project" />
+            }
+        </div>
+        <div class="shell filter-empty" data-filter-empty="projects" hidden>
+            <strong data-i18n="noProjectsTitle">Nothing here yet.</strong>
+            <span data-i18n="noProjects">No projects match this filter.</span>
+        </div>
+    </section>
+
+    <section class="section gallery-cta-section">
+        <div class="shell gallery-cta reveal">
+            <div>
+                <p class="eyebrow" data-i18n="projectCtaEyebrow">Have a complex idea?</p>
+                <h2 data-i18n="projectCtaTitle">Let’s turn it into a system people trust.</h2>
+            </div>
+            <a class="btn primary" asp-controller="Home" asp-action="Index" asp-fragment="contact" data-i18n="heroCtaContact">Contact Us</a>
+        </div>
+    </section>
+</main>

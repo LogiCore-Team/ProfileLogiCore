@@ -1,0 +1,33 @@
+@model Technology
+
+<div asp-validation-summary="ModelOnly" class="alert alert-danger border-0 shadow-sm rounded-3"></div>
+
+<div class="admin-form-section">
+    <div class="admin-form-section-title">
+        <i class="bi bi-cpu-fill"></i>
+        <span>بيانات التقنية</span>
+    </div>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="Name" class="form-label">اسم التقنية</label>
+            <input asp-for="Name" class="form-control" dir="ltr" placeholder="مثال: React, ASP.NET Core, PostgreSQL" />
+            <span asp-validation-for="Name" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="IconClass" class="form-label">فئة الأيقونة</label>
+            <input asp-for="IconClass" class="form-control" dir="ltr" placeholder="مثال: bi bi-filetype-js" />
+            <span asp-validation-for="IconClass" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-12">
+            <label asp-for="ImageUrl" class="form-label">رابط الصورة (اختياري)</label>
+            <input asp-for="ImageUrl" class="form-control" dir="ltr" placeholder="https://..." />
+            <span asp-validation-for="ImageUrl" class="text-danger small ms-1"></span>
+        </div>
+    </div>
+</div>
+<div class="d-flex gap-2 mt-4">
+    <button class="btn btn-primary px-4 py-2 rounded-3 fw-semibold shadow-sm" type="submit">
+        <i class="bi bi-check-lg me-1"></i>حفظ التقنية
+    </button>
+    <a class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold" asp-action="Index">إلغاء</a>
+</div>

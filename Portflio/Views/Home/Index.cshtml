@@ -1,0 +1,282 @@
+@model HomePageViewModel
+@{
+    ViewData["Title"] = "Smart Software Engineering Team";
+    ViewData["Description"] = "LOGICORE engineers intelligent web, mobile, AI, and enterprise software products.";
+    ViewData["Page"] = "home";
+}
+
+<main id="main" class="home-page">
+    <section class="hero section brand-hero" id="home" aria-labelledby="hero-title">
+        <div class="hero-bg" aria-hidden="true">
+            <span class="node node-a"></span>
+            <span class="node node-b"></span>
+            <span class="node node-c"></span>
+            <span class="node node-d"></span>
+            <span class="circuit-line line-a"></span>
+            <span class="circuit-line line-b"></span>
+            <span class="circuit-line line-c"></span>
+        </div>
+        <div class="hero-grid shell">
+            <div class="hero-copy reveal">
+                <div class="hero-brand-pill" aria-label="LOGICORE">
+                    <span aria-hidden="true">⚡</span>
+                    <strong>LOGICORE</strong>
+                </div>
+                <p class="eyebrow" data-i18n="heroEyebrow">Software Engineering Team</p>
+                <h1 id="hero-title" class="gradient-heading" data-i18n="heroTitle">Intelligence-driven software, engineered with mastery.</h1>
+                <p class="hero-lead" data-i18n="heroLead">LOGICORE designs smart systems, modern web products, mobile experiences, and enterprise platforms that scale cleanly.</p>
+                <p class="typing-line" aria-live="polite">
+                    <span data-i18n="typingPrefix">We build</span>
+                    <span class="typing-text" data-typing></span>
+                    <span class="typing-cursor" aria-hidden="true"></span>
+                </p>
+                <div class="hero-actions">
+                    <a class="btn primary" asp-controller="Projects" asp-action="Index" data-i18n="heroCtaWork">Explore Our Work</a>
+                    <a class="btn ghost" asp-controller="Home" asp-action="Index" asp-fragment="contact" data-i18n="heroCtaContact">Contact Us</a>
+                </div>
+            </div>
+
+            <div class="hero-visual reveal" aria-label="Abstract LOGICORE technology interface" data-i18n-aria="heroVisualLabel">
+                <div class="core-orbit" data-hero-orbit>
+                    <div class="core-chip">
+                        <span>LOGICORE</span>
+                        <small data-i18n="heroChip">Smart Core</small>
+                    </div>
+                    <span class="orbit-dot dot-1"></span>
+                    <span class="orbit-dot dot-2"></span>
+                    <span class="orbit-dot dot-3"></span>
+                </div>
+                <div class="signal-card signal-a">
+                    <strong>99.9%</strong>
+                    <span data-i18n="heroSignalA">Reliable delivery</span>
+                </div>
+                <div class="signal-card signal-b">
+                    <strong>&lt;120ms</strong>
+                    <span data-i18n="heroSignalB">Fast interfaces</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section about" id="about" aria-labelledby="about-title">
+        <div class="shell split">
+            <div class="section-copy reveal">
+                <p class="eyebrow" data-i18n="aboutEyebrow">About LOGICORE</p>
+                <h2 id="about-title" data-i18n="aboutTitle">We turn complex business logic into elegant digital products.</h2>
+                <p data-i18n="aboutText">Our team blends architecture, product thinking, clean interfaces, and reliable engineering to ship systems that teams trust every day.</p>
+            </div>
+            <div class="values-grid reveal">
+                <article>
+                    <h3 data-i18n="visionTitle">Vision</h3>
+                    <p data-i18n="visionText">Make intelligent software practical, maintainable, and valuable for ambitious teams.</p>
+                </article>
+                <article>
+                    <h3 data-i18n="missionTitle">Mission</h3>
+                    <p data-i18n="missionText">Deliver polished applications backed by strong architecture and measurable quality.</p>
+                </article>
+                <article>
+                    <h3 data-i18n="craftTitle">Craft</h3>
+                    <p data-i18n="craftText">Write readable code, design humane workflows, and document decisions that matter.</p>
+                </article>
+            </div>
+        </div>
+        <div class="stats shell reveal bento-grid bento-stats">
+            @foreach (var stat in Model.Stats)
+            {
+                <article>
+                    <strong>@stat.Value</strong>
+                    <span data-localized data-en="@stat.Label.English" data-ar="@stat.Label.Arabic">@stat.Label.English</span>
+                </article>
+            }
+        </div>
+    </section>
+
+    <section class="section" id="services" aria-labelledby="services-title">
+        <div class="shell section-head reveal">
+            <p class="eyebrow" data-i18n="servicesEyebrow">Services</p>
+            <h2 id="services-title" data-i18n="servicesTitle">Engineering services for modern digital teams.</h2>
+            <p data-i18n="servicesIntro">From product interfaces to cloud-backed enterprise systems, LOGICORE builds the pieces that keep organizations moving.</p>
+        </div>
+        <div class="shell card-grid services-grid bento-grid bento-services" data-services>
+            @foreach (var service in Model.Services)
+            {
+                <article class="service-card reveal bento-card">
+                    <span class="service-icon">@service.Icon</span>
+                    <h3 data-localized data-en="@service.Title.English" data-ar="@service.Title.Arabic">@service.Title.English</h3>
+                    <p data-localized data-en="@service.Description.English" data-ar="@service.Description.Arabic">@service.Description.English</p>
+                </article>
+            }
+        </div>
+    </section>
+
+    <section class="section tech-section" id="tech" aria-labelledby="tech-title">
+        <div class="shell section-head reveal">
+            <p class="eyebrow" data-i18n="techEyebrow">Technology Stack</p>
+            <h2 id="tech-title" data-i18n="techTitle">A sharp stack for reliable products.</h2>
+            <p data-i18n="techIntro">Filter the tools our team uses across backend, frontend, intelligent systems, and cloud delivery.</p>
+        </div>
+        <div class="shell filter-bar reveal" data-filter-controls="tech" aria-label="Technology filters">
+            <button type="button" class="active" data-filter="all" aria-pressed="true" data-i18n="all">All</button>
+            @foreach (var category in Model.TechnologyCategories.Where(c => c.Key != "all"))
+            {
+                <button type="button"
+                        data-filter="@category.Key"
+                        aria-pressed="false"
+                        data-localized
+                        data-en="@category.Label.English"
+                        data-ar="@category.Label.Arabic">
+                    @category.Label.English
+                </button>
+            }
+        </div>
+        <div class="shell tech-grid" data-tech-grid data-filter-grid="tech">
+            @foreach (var technology in Model.Technologies)
+            {
+                <article class="tech-card reveal" data-filter-item data-category="@technology.CategoryKey">
+                    <strong>@technology.Name</strong>
+                    <span data-localized data-en="@technology.Note.English" data-ar="@technology.Note.Arabic">@technology.Note.English</span>
+                </article>
+            }
+        </div>
+    </section>
+
+    <section class="section" id="portfolio" aria-labelledby="portfolio-title">
+        <div class="shell section-head section-head-with-action reveal">
+            <div>
+                <p class="eyebrow" data-i18n="portfolioEyebrow">Portfolio</p>
+                <h2 id="portfolio-title" data-i18n="portfolioTitle">Selected work shaped for speed, clarity, and scale.</h2>
+                <p data-i18n="portfolioIntro">Explore LOGICORE project work across web, mobile, smart systems, and enterprise platforms.</p>
+            </div>
+            <a class="text-link" asp-controller="Projects" asp-action="Index" data-i18n="allProjects">View all projects</a>
+        </div>
+        <div class="shell filter-bar reveal" data-filter-controls="home-projects" aria-label="Project filters">
+            <button type="button" class="active" data-filter="all" aria-pressed="true" data-i18n="all">All</button>
+            @foreach (var category in Model.ProjectCategories)
+            {
+                <button type="button"
+                        data-filter="@category.Key"
+                        aria-pressed="false"
+                        data-localized
+                        data-en="@category.Label.English"
+                        data-ar="@category.Label.Arabic">@category.Label.English</button>
+            }
+        </div>
+        <div class="shell card-grid portfolio-grid bento-grid bento-projects" data-projects data-filter-grid="home-projects">
+            @foreach (var project in Model.FeaturedProjects)
+            {
+                <partial name="_ProjectCard" model="project" />
+            }
+        </div>
+        <p class="shell filter-empty" data-filter-empty="home-projects" hidden data-i18n="noProjects">No projects match this filter.</p>
+    </section>
+
+    <section class="section team-section" id="team" aria-labelledby="team-title">
+        <div class="shell section-head reveal">
+            <p class="eyebrow" data-i18n="teamEyebrow">Team</p>
+            <h2 id="team-title" data-i18n="teamTitle">Senior builders with product instincts.</h2>
+            <p data-i18n="teamIntro">A compact team covering architecture, experience design, backend systems, mobile delivery, and intelligent automation.</p>
+        </div>
+        <div class="shell card-grid team-grid" data-team>
+            @foreach (var member in Model.TeamMembers)
+            {
+                <article class="team-card reveal">
+                    <span class="member-avatar">@member.Initials</span>
+                    <h3 data-localized data-en="@member.Name.English" data-ar="@member.Name.Arabic">@member.Name.English</h3>
+                    <p data-localized data-en="@member.Role.English" data-ar="@member.Role.Arabic">@member.Role.English</p>
+                    <div class="badge-row">
+                        @foreach (var skill in member.Skills)
+                        {
+                            <span class="badge">@skill</span>
+                        }
+                    </div>
+                    <div class="member-links">
+                        <a href="@member.GitHubUrl" target="_blank" rel="noreferrer">GitHub</a>
+                        <a href="@member.LinkedInUrl" target="_blank" rel="noreferrer">LinkedIn</a>
+                    </div>
+                </article>
+            }
+        </div>
+    </section>
+
+    <section class="section testimonials-section" id="testimonials" aria-labelledby="testimonials-title">
+        <div class="shell section-head reveal">
+            <p class="eyebrow" data-i18n="testimonialsEyebrow">Client Success</p>
+            <h2 id="testimonials-title" data-i18n="testimonialsTitle">Teams choose LOGICORE when software has to work beautifully.</h2>
+        </div>
+        <div class="shell testimonial-wrap reveal">
+            <button class="carousel-btn" type="button" data-testimonial-prev aria-label="Previous testimonial" data-i18n-aria="prevTestimonial">‹</button>
+            <div class="testimonial-viewport" data-testimonial>
+                @for (var index = 0; index < Model.Testimonials.Count; index++)
+                {
+                    var testimonial = Model.Testimonials[index];
+                    <article class="testimonial-card" data-testimonial-slide="@index" hidden="@(index == 0 ? null : "hidden")">
+                        <div class="rating" aria-label="@testimonial.Rating out of 5 stars">@(new string('★', testimonial.Rating))</div>
+                        <p>“<span data-localized data-en="@testimonial.Quote.English" data-ar="@testimonial.Quote.Arabic">@testimonial.Quote.English</span>”</p>
+                        <div class="testimonial-meta">
+                            <strong data-localized data-en="@testimonial.Name.English" data-ar="@testimonial.Name.Arabic">@testimonial.Name.English</strong>
+                            <span data-localized data-en="@testimonial.Company.English" data-ar="@testimonial.Company.Arabic">@testimonial.Company.English</span>
+                        </div>
+                    </article>
+                }
+            </div>
+            <button class="carousel-btn" type="button" data-testimonial-next aria-label="Next testimonial" data-i18n-aria="nextTestimonial">›</button>
+        </div>
+        <div class="testimonial-dots" data-testimonial-dots aria-label="Testimonial slides" data-i18n-aria="testimonialDots">
+            @for (var index = 0; index < Model.Testimonials.Count; index++)
+            {
+                <button type="button"
+                        class="@(index == 0 ? "active" : null)"
+                        data-testimonial-dot="@index"
+                        aria-label="@(index + 1)"
+                        aria-current="@(index == 0 ? "true" : "false")"></button>
+            }
+        </div>
+    </section>
+
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="shell contact-grid">
+            <div class="section-copy reveal">
+                <p class="eyebrow" data-i18n="contactEyebrow">Contact</p>
+                <h2 id="contact-title" data-i18n="contactTitle">Tell us what you want to build.</h2>
+                <p data-i18n="contactIntro">Share your idea, platform, or business workflow. LOGICORE will help shape the path from concept to production.</p>
+                <div class="contact-cards">
+                    <article><span>@@</span><div><h3 data-i18n="contactEmailTitle">Email</h3><p>hello@logicore.dev</p></div></article>
+                    <article><span>⌖</span><div><h3 data-i18n="contactLocationTitle">Location</h3><p data-i18n="contactLocation">Remote-first, serving global teams</p></div></article>
+                    <article><span>⏱</span><div><h3 data-i18n="contactResponseTitle">Response Time</h3><p data-i18n="contactResponse">Usually within one business day</p></div></article>
+                </div>
+            </div>
+
+            <form class="contact-form reveal"
+                  method="post"
+                  asp-controller="Home"
+                  asp-action="SendMessage"
+                  asp-antiforgery="false"
+                  data-contact-form
+                  novalidate>
+                @Html.AntiForgeryToken()
+                <div class="form-field">
+                    <label for="name" data-i18n="formName">Name</label>
+                    <input id="name" name="Name" type="text" maxlength="200" autocomplete="name" required data-i18n-placeholder="formNamePlaceholder">
+                    <small class="field-error" data-error-for="Name"></small>
+                </div>
+                <div class="form-field">
+                    <label for="email" data-i18n="formEmail">Email</label>
+                    <input id="email" name="Email" type="email" maxlength="320" autocomplete="email" required data-i18n-placeholder="formEmailPlaceholder">
+                    <small class="field-error" data-error-for="Email"></small>
+                </div>
+                <div class="form-field">
+                    <label for="subject" data-i18n="formSubject">Subject</label>
+                    <input id="subject" name="Subject" type="text" maxlength="300" required data-i18n-placeholder="formSubjectPlaceholder">
+                    <small class="field-error" data-error-for="Subject"></small>
+                </div>
+                <div class="form-field">
+                    <label for="message" data-i18n="formMessage">Message</label>
+                    <textarea id="message" name="Message" rows="5" maxlength="4000" required data-i18n-placeholder="formMessagePlaceholder"></textarea>
+                    <small class="field-error" data-error-for="Message"></small>
+                </div>
+                <button class="btn primary form-submit" type="submit" data-i18n="formSubmit">Send Message</button>
+                <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </section>
+</main>

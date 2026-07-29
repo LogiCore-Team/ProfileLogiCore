@@ -1,0 +1,36 @@
+@model StatItem
+@{
+    ViewData["Title"] = "تفاصيل الإحصائية";
+}
+
+<div class="admin-page-heading">
+    <div>
+        <h1 class="h3 mb-0">تفاصيل الإحصائية</h1>
+        <p>عرض بيانات المؤشر الإحصائي.</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-primary rounded-3 px-3 py-2 d-inline-flex align-items-center gap-2 shadow-sm" asp-action="Edit" asp-route-id="@Model.Id">
+            <i class="bi bi-pencil-square"></i>
+            <span>تعديل الإحصائية</span>
+        </a>
+        <a class="btn btn-outline-secondary rounded-3 px-3 py-2" asp-action="Index">
+            <span>العودة إلى القائمة</span>
+        </a>
+    </div>
+</div>
+
+<div class="admin-card">
+    <dl class="row mb-0">
+        <dt class="col-sm-3 text-muted">قيمة المؤشر</dt>
+        <dd class="col-sm-9"><span class="badge bg-primary-subtle text-primary fs-5 px-3 py-1 rounded-pill">@Model.Value</span></dd>
+
+        <dt class="col-sm-3 text-muted">العنوان بالعربية (AR)</dt>
+        <dd class="col-sm-9 fw-bold text-dark" dir="rtl">@Model.LabelAr</dd>
+
+        <dt class="col-sm-3 text-muted">العنوان بالإنجليزية (EN)</dt>
+        <dd class="col-sm-9">@Model.LabelEn</dd>
+
+        <dt class="col-sm-3 text-muted">ترتيب العرض</dt>
+        <dd class="col-sm-9"><span class="badge bg-light text-secondary border">#@Model.DisplayOrder</span></dd>
+    </dl>
+</div>

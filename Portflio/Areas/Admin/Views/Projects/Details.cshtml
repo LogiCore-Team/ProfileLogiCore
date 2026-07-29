@@ -1,0 +1,128 @@
+@model Project
+@{
+    ViewData["Title"] = "تفاصيل المشروع";
+}
+
+<div class="admin-page-heading">
+    <div>
+        <h1 class="h3 mb-0">@Model.TitleEn</h1>
+        <p dir="rtl">@Model.TitleAr</p>
+    </div>
+    <div class="admin-actions">
+        <a class="btn btn-primary rounded-3 px-3 py-2 d-inline-flex align-items-center gap-2 shadow-sm" asp-action="Edit" asp-route-id="@Model.Id">
+            <i class="bi bi-pencil-square"></i>
+            <span>تعديل المشروع</span>
+        </a>
+        <a class="btn btn-outline-secondary rounded-3 px-3 py-2" asp-action="Index">
+            <i class="bi bi-arrow-left me-1"></i>رجوع
+        </a>
+    </div>
+</div>
+
+<div class="detail-card mb-4">
+    <div class="admin-card-header">
+        <h2 class="h6 mb-0 text-uppercase tracking-wider text-muted fw-bold">البيانات الأساسية</h2>
+    </div>
+    <dl class="detail-list">
+        <dt>اسم العميل</dt><dd class="fw-semibold">@(string.IsNullOrWhiteSpace(Model.ClientName) ? "—" : Model.ClientName)</dd>
+        <dt>التصنيف</dt><dd><span class="badge bg-light text-dark border">@Model.Category</span></dd>
+        <dt>تاريخ الإنشاء</dt><dd>@Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</dd>
+        <dt>حالة التمييز</dt>
+        <dd>
+            @if (Model.IsFeatured)
+            {
+                <span class="badge badge-featured"><i class="bi bi-star-fill me-1"></i>مميز</span>
+            }
+            else
+            {
+                <span class="badge badge-hidden">عادي</span>
+            }
+        </dd>
+        <dt>صورة الغلاف</dt>
+        <dd>
+            @if (!string.IsNullOrWhiteSpace(Model.CoverImageUrl))
+            {
+                <a href="@Model.CoverImageUrl" target="_blank" class="text-primary text-break"><i class="bi bi-link-45deg me-1"></i>@Model.CoverImageUrl</a>
+            }
+            else
+            {
+                <span class="text-muted">—</span>
+            }
+        </dd>
+        <dt>رابط العرض المباشر</dt>
+        <dd>
+            @if (!string.IsNullOrWhiteSpace(Model.LiveDemoUrl))
+            {
+                <a href="@Model.LiveDemoUrl" target="_blank" class="text-primary text-break"><i class="bi bi-box-arrow-up-right me-1"></i>@Model.LiveDemoUrl</a>
+            }
+            else
+            {
+                <span class="text-muted">—</span>
+            }
+        </dd>
+        <dt>رابط المستودع</dt>
+        <dd>
+            @if (!string.IsNullOrWhiteSpace(Model.RepoUrl))
+            {
+                <a href="@Model.RepoUrl" target="_blank" class="text-primary text-break"><i class="bi bi-github me-1"></i>@Model.RepoUrl</a>
+            }
+            else
+            {
+                <span class="text-muted">—</span>
+            }
+        </dd>
+        <dt>التقنيات</dt>
+        <dd>
+            @(Model.ProjectTechnologies.Count == 0
+                ? "—"
+                : string.Join(", ", Model.ProjectTechnologies.Select(item => item.Technology.Name)))
+        </dd>
+    </dl>
+</div>
+
+<div class="row g-3">
+    <div class="col-lg-6">
+        <div class="admin-card h-100">
+            <div class="admin-card-header mx--3 mt--3 mb-3 border-0 bg-transparent p-0">
+                <h3 class="h5 fw-bold text-dark d-flex align-items-center gap-2">
+                    <i class="bi bi-journal-text text-primary"></i>الوصف بالإنجليزية (EN)
+                </h3>
+            </div>
+            <p class="text-muted fw-medium fs-7 mb-2">@Model.ShortDescriptionEn</p>
+            <p class="mb-0 text-dark lh-base">@Model.FullDescriptionEn</p>
+        </div>
+    </div>
+    <div class="col-lg-6" dir="rtl">
+        <div class="admin-card h-100">
+            <h2 class="h5">الوصف العربي</h2>
+            <p class="text-secondary">@Model.ShortDescriptionAr</p>
+            <p class="mb-0">@Model.FullDescriptionAr</p>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="admin-card h-100">
+            <h3 class="h5 fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+                <i class="bi bi-list-check text-success"></i>الميزات (@Model.Features.Count)
+            </h3>
+            <ul class="list-group list-group-flush border-0">
+                @foreach (var feature in Model.Features.OrderBy(item => item.DisplayOrder))
+                {
+                    <li class="mb-2">@feature.FeatureTextEn <span class="text-secondary">/ @feature.FeatureTextAr</span></li>
+                }
+            </ol>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="admin-card h-100">
+            <h3 class="h5 fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+                <i class="bi bi-images text-warning"></i>الوسائط (@Model.Media.Count)
+            </h3>
+            <ul class="list-group list-group-flush border-0">
+                @foreach (var media in Model.Media.OrderBy(item => item.DisplayOrder))
+                {
+                    <li class="mb-2"><strong>@media.MediaType:</strong> @media.MediaUrl</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

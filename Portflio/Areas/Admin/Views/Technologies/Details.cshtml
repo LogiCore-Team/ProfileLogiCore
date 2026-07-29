@@ -1,0 +1,53 @@
+@model Technology
+@{
+    ViewData["Title"] = "تفاصيل التقنية";
+}
+
+<div class="admin-page-heading">
+    <div>
+        <h1 class="h3 mb-0">@Model.Name</h1>
+        <p>بيانات التقنية وروابط المشاريع.</p>
+    </div>
+    <div class="admin-actions">
+        <a class="btn btn-primary rounded-3 px-3 py-2 d-inline-flex align-items-center gap-2 shadow-sm" asp-action="Edit" asp-route-id="@Model.Id">
+            <i class="bi bi-pencil-square"></i><span>تعديل التقنية</span>
+        </a>
+        <a class="btn btn-outline-secondary rounded-3 px-3 py-2" asp-action="Index">
+            <i class="bi bi-arrow-left me-1"></i>رجوع
+        </a>
+    </div>
+</div>
+
+<div class="detail-card">
+    <div class="admin-card-header">
+        <h2 class="h6 mb-0 text-uppercase tracking-wider text-muted fw-bold">بيانات التقنية</h2>
+    </div>
+    <dl class="detail-list">
+        <dt>فئة الأيقونة</dt>
+        <dd>
+            @if (!string.IsNullOrWhiteSpace(Model.IconClass))
+            {
+                <code class="bg-light px-2 py-1 rounded text-primary"><i class="@Model.IconClass me-1"></i>@Model.IconClass</code>
+            }
+            else
+            {
+                <span class="text-muted">—</span>
+            }
+        </dd>
+        <dt>رابط الصورة</dt>
+        <dd>
+            @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+            {
+                <a href="@Model.ImageUrl" target="_blank" class="text-primary text-break"><i class="bi bi-image me-1"></i>@Model.ImageUrl</a>
+            }
+            else
+            {
+                <span class="text-muted">—</span>
+            }
+        </dd>
+        <dt>المشاريع المرتبطة</dt>
+        <dd>
+            <span class="badge badge-tech fs-7">@Model.ProjectTechnologies.Count مشروع</span>
+        </dd>
+    </dl>
+</div>

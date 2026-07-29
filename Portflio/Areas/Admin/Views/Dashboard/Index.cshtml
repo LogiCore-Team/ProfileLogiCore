@@ -1,0 +1,65 @@
+@model AdminDashboardViewModel
+@{
+    ViewData["Title"] = "نظرة عامة";
+}
+
+<div class="admin-page-heading">
+    <div>
+        <h1 class="h3 mb-0">نظرة عامة على لوحة الإدارة</h1>
+        <p>إدارة ومتابعة محتوى جميع أقسام الموقع.</p>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    @{
+        var cards = new[]
+        {
+            new { Controller = "Projects", Label = "المشاريع", Count = Model.Projects, Icon = "bi-briefcase-fill", Color = "primary", Action = "عرض جميع المشاريع" },
+            new { Controller = "Services", Label = "الخدمات", Count = Model.Services, Icon = "bi-gear-fill", Color = "success", Action = "إدارة الخدمات" },
+            new { Controller = "Technologies", Label = "التقنيات", Count = Model.Technologies, Icon = "bi-cpu-fill", Color = "warning", Action = "إدارة التقنيات" },
+            new { Controller = "TeamMembers", Label = "أعضاء الفريق", Count = Model.TeamMembers, Icon = "bi-people-fill", Color = "purple", Action = "إدارة الفريق" },
+            new { Controller = "Testimonials", Label = "شهادات العملاء", Count = Model.Testimonials, Icon = "bi-chat-quote-fill", Color = "success", Action = "إدارة الشهادات" },
+            new { Controller = "Stats", Label = "الإحصائيات", Count = Model.Stats, Icon = "bi-bar-chart-line-fill", Color = "primary", Action = "إدارة الإحصائيات" }
+        };
+    }
+    @foreach (var card in cards)
+    {
+        <div class="col-sm-6 col-xl-4">
+            <a class="admin-stat-card text-decoration-none" asp-controller="@card.Controller" asp-action="Index">
+                <div class="admin-stat-header">
+                    <div class="admin-stat-icon @card.Color"><i class="bi @card.Icon"></i></div>
+                    <span class="admin-stat-title">@card.Label</span>
+                </div>
+                <div class="admin-stat-number">@card.Count</div>
+                <div class="admin-stat-footer">
+                    <span>@card.Action</span>
+                    <i class="bi bi-arrow-left"></i>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+<div class="admin-card">
+    <div class="mb-3 pb-3 border-bottom">
+        <h2 class="h5 mb-1 fw-bold">إجراءات سريعة</h2>
+        <p class="text-muted small mb-0">أضف محتوى جديدًا إلى موقع معرض الأعمال.</p>
+    </div>
+    <div class="row g-3">
+        <div class="col-sm-6 col-lg-4">
+            <a asp-controller="Projects" asp-action="Create" class="btn btn-light border w-100 p-3 text-start">
+                <i class="bi bi-plus-circle-fill text-primary ms-2"></i>إضافة مشروع
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <a asp-controller="Services" asp-action="Create" class="btn btn-light border w-100 p-3 text-start">
+                <i class="bi bi-plus-circle-fill text-success ms-2"></i>إضافة خدمة
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <a asp-controller="Testimonials" asp-action="Create" class="btn btn-light border w-100 p-3 text-start">
+                <i class="bi bi-plus-circle-fill text-warning ms-2"></i>إضافة شهادة عميل
+            </a>
+        </div>
+    </div>
+</div>

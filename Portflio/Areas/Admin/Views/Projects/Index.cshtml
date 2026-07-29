@@ -1,0 +1,88 @@
+@model IReadOnlyList<Project>
+@{
+    ViewData["Title"] = "المشاريع";
+}
+
+<div class="admin-page-heading">
+    <div>
+        <h1 class="h3 mb-0">المشاريع</h1>
+        <p>إنشاء وإدارة مشاريع معرض الأعمال باللغتين.</p>
+    </div>
+    <a class="btn btn-primary rounded-3 px-3 py-2 d-inline-flex align-items-center gap-2 shadow-sm" asp-action="Create">
+        <i class="bi bi-plus-lg"></i>
+        <span>إضافة مشروع</span>
+    </a>
+</div>
+
+<div class="admin-card p-0 overflow-hidden">
+    <div class="table-responsive">
+        <table class="table table-hover admin-table">
+            <thead>
+                <tr>
+                    <th>اسم المشروع</th>
+                    <th>العميل</th>
+                    <th>التصنيف</th>
+                    <th>التقنيات</th>
+                    <th>مميز</th>
+                    <th>تاريخ الإنشاء</th>
+                    <th class="text-end">الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count == 0)
+                {
+                    <tr>
+                        <td colspan="7" class="py-5 text-center text-muted">
+                            <i class="bi bi-inbox fs-2 d-block mb-2 text-secondary opacity-50"></i>
+                            <span>لا توجد مشاريع حتى الآن.</span>
+                        </td>
+                    </tr>
+                }
+                @foreach (var project in Model)
+                {
+                    <tr>
+                        <td>
+                            <strong>@project.TitleEn</strong>
+                            <small class="d-block text-secondary" dir="rtl">@project.TitleAr</small>
+                        </td>
+                        <td>
+                            <span class="fw-semibold text-secondary">@(string.IsNullOrWhiteSpace(project.ClientName) ? "—" : project.ClientName)</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-light text-dark border">@project.Category</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-tech">@project.ProjectTechnologies.Count تقنية</span>
+                        </td>
+                        <td>
+                            @if (project.IsFeatured)
+                            {
+                                <span class="badge badge-featured">
+                                    <i class="bi bi-star-fill me-1"></i>مميز
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-hidden">عادي</span>
+                            }
+                        </td>
+                        <td class="text-muted small">@project.CreatedAt.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <div class="admin-actions justify-content-end">
+                                <a class="btn-icon btn-icon-primary" asp-action="Edit" asp-route-id="@project.Id" title="تعديل المشروع">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a class="btn-icon btn-icon-secondary" asp-action="Details" asp-route-id="@project.Id" title="عرض التفاصيل">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a class="btn-icon btn-icon-danger" asp-action="Delete" asp-route-id="@project.Id" title="حذف المشروع">
+                                    <i class="bi bi-trash3"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

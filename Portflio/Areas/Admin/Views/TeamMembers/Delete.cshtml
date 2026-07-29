@@ -1,0 +1,33 @@
+@model TeamMember
+@{
+    ViewData["Title"] = "حذف عضو الفريق";
+}
+
+<div class="admin-page-heading">
+    <div>
+        <h1 class="h3 mb-0 text-danger">حذف عضو الفريق</h1>
+        <p>أكد إزالة ملف عضو الفريق.</p>
+    </div>
+</div>
+
+<div class="admin-card max-width-700">
+    <div class="alert alert-danger border-0 shadow-sm rounded-3 d-flex align-items-center gap-3 p-3 mb-4">
+        <i class="bi bi-exclamation-triangle-fill fs-3 text-danger flex-shrink-0"></i>
+        <div>
+            <strong class="d-block mb-1">هذا الإجراء لا يمكن التراجع عنه.</strong>
+            <span>سيؤدي الحذف إلى إزالة العضو من قسم الفريق في الموقع.</span>
+        </div>
+    </div>
+
+    <dl class="detail-list mb-4 bg-light p-3 rounded-3 border">
+        <dt>اسم العضو</dt><dd class="fw-bold text-dark">@Model.NameAr</dd>
+        <dt>دور العضو</dt><dd class="text-secondary">@Model.RoleAr</dd>
+    </dl>
+
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-flex gap-2">
+        <button type="submit" class="btn btn-danger px-4 py-2 rounded-3 fw-semibold shadow-sm">
+            <i class="bi bi-trash3 me-1"></i>حذف نهائي
+        </button>
+        <a class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold" asp-action="Index">إلغاء</a>
+    </form>
+</div>

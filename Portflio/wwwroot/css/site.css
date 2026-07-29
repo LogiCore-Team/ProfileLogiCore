@@ -1,0 +1,647 @@
+:root,
+html[data-theme="dark"],
+html[data-bs-theme="dark"],
+html.dark-theme {
+  color-scheme: dark;
+  --bg-dark-slate: #040814;
+  --bg-card-glass: rgba(10, 17, 40, 0.85);
+  --primary-blue: #0075FF;
+  --secondary-silver: #E2E8F0;
+  --accent-cyan: #00F0FF;
+  --card-border: rgba(0, 117, 255, 0.2);
+
+  --site-background: var(--bg-dark-slate);
+  --site-card: var(--bg-card-glass);
+  --site-card-solid: color-mix(in srgb, var(--bg-dark-slate) 82%, var(--primary-blue));
+  --site-text: var(--secondary-silver);
+  --site-muted: color-mix(in srgb, var(--secondary-silver) 68%, transparent);
+  --site-border: var(--card-border);
+  --site-surface-soft: color-mix(in srgb, var(--primary-blue) 8%, transparent);
+  --site-heading-start: #FFFFFF;
+  --site-on-accent: var(--bg-dark-slate);
+  --site-shadow: 0 18px 55px color-mix(in srgb, var(--bg-dark-slate) 72%, transparent);
+  --site-glow: 0 0 28px color-mix(in srgb, var(--accent-cyan) 18%, transparent);
+
+  /* Compatibility aliases for the existing public stylesheet. */
+  --cyan: var(--accent-cyan);
+  --cyan-strong: var(--primary-blue);
+  --charcoal: var(--site-background);
+  --neutral-dark: var(--site-surface-soft);
+  --panel: var(--site-card);
+  --panel-solid: var(--site-card-solid);
+  --text: var(--site-text);
+  --muted: var(--site-muted);
+  --line: var(--site-border);
+  --shadow: var(--site-shadow);
+}
+
+html[data-theme="light"],
+html[data-bs-theme="light"],
+html.light-theme {
+  color-scheme: light;
+  --bg-card-glass: #FFFFFF;
+  --site-background: #F8FAFC;
+  --site-card: #FFFFFF;
+  --site-card-solid: #FFFFFF;
+  --site-text: #0F172A;
+  --site-muted: color-mix(in srgb, var(--site-text) 68%, transparent);
+  --site-border: color-mix(in srgb, var(--primary-blue) 22%, transparent);
+  --site-surface-soft: color-mix(in srgb, var(--primary-blue) 6%, #FFFFFF);
+  --site-heading-start: #0F172A;
+  --site-on-accent: #040814;
+  --site-shadow: 0 18px 48px color-mix(in srgb, var(--primary-blue) 11%, transparent);
+  --site-glow: 0 0 25px color-mix(in srgb, var(--accent-cyan) 22%, transparent);
+
+  --cyan: var(--accent-cyan);
+  --cyan-strong: var(--primary-blue);
+  --charcoal: var(--site-background);
+  --neutral-dark: var(--site-surface-soft);
+  --panel: var(--site-card);
+  --panel-solid: var(--site-card-solid);
+  --text: var(--site-text);
+  --muted: var(--site-muted);
+  --line: var(--site-border);
+  --shadow: var(--site-shadow);
+}
+
+html,
+body {
+  background-color: var(--site-background);
+}
+
+body {
+  color: var(--site-text);
+  background:
+    radial-gradient(
+      circle at 10% 4%,
+      color-mix(in srgb, var(--primary-blue) 13%, transparent),
+      transparent 30rem
+    ),
+    var(--site-background);
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+.site-header {
+  border-color: var(--site-border);
+  background: color-mix(in srgb, var(--site-background) 88%, transparent);
+  transition: background-color 300ms ease, border-color 300ms ease;
+}
+
+.site-footer {
+  border-color: var(--site-border);
+  color: var(--site-text);
+  background: color-mix(in srgb, var(--site-background) 94%, var(--primary-blue));
+}
+
+.site-footer p,
+.footer-links,
+.social-links,
+.footer-bottom {
+  color: var(--site-muted);
+}
+
+.nav-panel a:hover,
+.nav-panel a:focus-visible,
+.nav-panel a.active,
+.footer-links a:hover,
+.social-links a:hover,
+.text-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.brand > span:last-child span,
+.brand-mark {
+  color: var(--primary-blue);
+}
+
+.brand-mark {
+  border-color: color-mix(in srgb, var(--primary-blue) 62%, transparent);
+  background: color-mix(in srgb, var(--primary-blue) 12%, transparent);
+}
+
+.theme-toggle {
+  width: 4rem;
+  height: 2.15rem;
+  padding: 0.2rem;
+  border: 1px solid var(--site-border);
+  color: var(--site-text);
+  background: var(--site-card);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary-blue) 5%, transparent);
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--accent-cyan);
+  box-shadow: var(--site-glow);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+}
+
+.theme-toggle-track {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.theme-toggle-icon {
+  position: absolute;
+  inset-block-start: 50%;
+  z-index: 1;
+  transform: translateY(-50%);
+  color: var(--site-muted);
+  font-size: 0.72rem;
+  line-height: 1;
+  transition: color 300ms ease, opacity 300ms ease;
+}
+
+.theme-toggle-sun {
+  inset-inline-start: 0.35rem;
+}
+
+.theme-toggle-moon {
+  inset-inline-end: 0.35rem;
+  color: var(--accent-cyan);
+}
+
+.theme-toggle-dot {
+  z-index: 2;
+  inset-inline-start: 0.08rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--primary-blue));
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent-cyan) 55%, transparent);
+  transition: inset-inline-start 300ms ease, box-shadow 300ms ease;
+}
+
+html[data-theme="light"] .theme-toggle-dot,
+html[data-bs-theme="light"] .theme-toggle-dot,
+html.light-theme .theme-toggle-dot {
+  inset-inline-start: calc(100% - 1.43rem);
+}
+
+html[data-theme="light"] .theme-toggle-sun,
+html[data-bs-theme="light"] .theme-toggle-sun,
+html.light-theme .theme-toggle-sun {
+  color: var(--primary-blue);
+}
+
+html[data-theme="light"] .theme-toggle-moon,
+html[data-bs-theme="light"] .theme-toggle-moon,
+html.light-theme .theme-toggle-moon {
+  color: var(--site-muted);
+}
+
+.language-switcher,
+.menu-toggle,
+.back-to-top {
+  border-color: var(--site-border);
+  color: var(--site-text);
+  background: var(--site-card);
+}
+
+.language-switcher button.active,
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  color: var(--site-on-accent);
+  background: linear-gradient(135deg, var(--accent-cyan), var(--primary-blue));
+}
+
+.home-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--site-text);
+  background:
+    radial-gradient(
+      circle at 12% 8%,
+      color-mix(in srgb, var(--primary-blue) 16%, transparent),
+      transparent 31rem
+    ),
+    radial-gradient(
+      circle at 88% 34%,
+      color-mix(in srgb, var(--accent-cyan) 9%, transparent),
+      transparent 28rem
+    ),
+    var(--site-background);
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+.home-page::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--site-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--site-border) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.18;
+  mask-image: linear-gradient(to bottom, #000 12%, transparent 82%);
+}
+
+.brand-hero {
+  min-height: calc(100svh - var(--header-height));
+  background:
+    radial-gradient(
+      circle at 78% 46%,
+      color-mix(in srgb, var(--primary-blue) 18%, transparent),
+      transparent 25rem
+    ),
+    linear-gradient(
+      120deg,
+      color-mix(in srgb, var(--site-background) 20%, transparent),
+      color-mix(in srgb, var(--site-background) 88%, transparent)
+    );
+}
+
+.home-page .gradient-heading,
+.home-page .section-head h2,
+.home-page .section-copy h2 {
+  color: transparent;
+  background: linear-gradient(90deg, var(--site-heading-start), var(--primary-blue));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html[dir="rtl"] .home-page .gradient-heading,
+html[dir="rtl"] .home-page .section-head h2,
+html[dir="rtl"] .home-page .section-copy h2 {
+  background-image: linear-gradient(270deg, var(--site-heading-start), var(--primary-blue));
+}
+
+.hero-brand-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-block-end: 1rem;
+  padding: 0.42rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--accent-cyan) 48%, transparent);
+  border-radius: 999px;
+  color: var(--accent-cyan);
+  background: color-mix(in srgb, var(--accent-cyan) 7%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--primary-blue) 12%, transparent) inset,
+    var(--site-glow);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+
+html[dir="rtl"] .hero-brand-pill {
+  letter-spacing: 0;
+}
+
+.eyebrow,
+.typing-text,
+.core-chip span,
+.signal-card strong,
+.text-link,
+.rating,
+.carousel-btn,
+.stats strong,
+.tech-card strong {
+  color: var(--accent-cyan);
+}
+
+.btn,
+.filter-bar button,
+.service-card,
+.project-card,
+.team-card,
+.tech-card,
+.values-grid article,
+.stats article,
+.testimonial-card,
+.contact-cards article {
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease,
+    border-color 300ms ease,
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+.btn.primary {
+  border-color: color-mix(in srgb, var(--accent-cyan) 62%, transparent);
+  color: var(--site-on-accent);
+  background: linear-gradient(135deg, var(--accent-cyan), var(--primary-blue));
+  box-shadow:
+    0 14px 34px color-mix(in srgb, var(--primary-blue) 30%, transparent),
+    0 0 24px color-mix(in srgb, var(--accent-cyan) 14%, transparent);
+}
+
+.btn.primary:hover,
+.btn.primary:focus-visible {
+  filter: brightness(1.06);
+  animation: cta-pulse 560ms ease both;
+  box-shadow:
+    0 18px 44px color-mix(in srgb, var(--primary-blue) 38%, transparent),
+    0 0 34px color-mix(in srgb, var(--accent-cyan) 28%, transparent);
+}
+
+.btn.ghost,
+.filter-bar button {
+  border-color: var(--site-border);
+  color: var(--site-text);
+  background: var(--site-card);
+}
+
+.filter-bar button.active,
+.filter-bar button:hover,
+.filter-bar button:focus-visible {
+  border-color: var(--accent-cyan);
+  color: var(--site-on-accent);
+  background: linear-gradient(135deg, var(--accent-cyan), var(--primary-blue));
+  box-shadow: var(--site-glow);
+}
+
+.core-orbit,
+.core-chip {
+  border-color: color-mix(in srgb, var(--accent-cyan) 36%, transparent);
+}
+
+.core-orbit {
+  background:
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--primary-blue) 22%, transparent),
+      transparent 40%
+    ),
+    conic-gradient(
+      from 90deg,
+      color-mix(in srgb, var(--accent-cyan) 20%, transparent),
+      transparent,
+      color-mix(in srgb, var(--primary-blue) 38%, transparent),
+      transparent
+    );
+}
+
+.core-chip,
+.signal-card,
+.contact-form {
+  border-color: var(--site-border);
+  color: var(--site-text);
+  background: var(--site-card);
+  box-shadow: var(--site-shadow);
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(0.85rem, 2vw, 1.25rem);
+}
+
+.bento-stats article,
+.bento-services .service-card,
+.bento-projects .project-card,
+.values-grid article,
+.tech-card,
+.team-card,
+.testimonial-card,
+.contact-cards article {
+  border: 1px solid var(--site-border);
+  color: var(--site-text);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--primary-blue) 5%, transparent),
+      transparent 42%
+    ),
+    var(--site-card);
+  box-shadow: var(--site-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.bento-stats article:hover,
+.bento-services .service-card:hover,
+.bento-projects .project-card:hover,
+.values-grid article:hover,
+.tech-card:hover,
+.team-card:hover,
+.testimonial-card:hover,
+.contact-cards article:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent-cyan) 62%, transparent);
+  box-shadow: var(--site-shadow), var(--site-glow);
+}
+
+.bento-stats article {
+  grid-column: span 3;
+  min-height: 9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bento-stats strong {
+  text-shadow: 0 0 24px color-mix(in srgb, var(--accent-cyan) 22%, transparent);
+}
+
+.bento-services .service-card {
+  grid-column: span 5;
+  min-height: 17rem;
+}
+
+.bento-services .service-card:nth-child(4n + 1),
+.bento-services .service-card:nth-child(4n) {
+  grid-column: span 7;
+}
+
+.bento-projects .project-card {
+  grid-column: span 4;
+}
+
+.bento-projects .project-card:nth-child(6n + 1) {
+  grid-column: span 7;
+}
+
+.bento-projects .project-card:nth-child(6n + 2) {
+  grid-column: span 5;
+}
+
+.service-icon,
+.member-avatar {
+  border: 1px solid color-mix(in srgb, var(--accent-cyan) 24%, transparent);
+  color: var(--accent-cyan);
+  background: color-mix(in srgb, var(--primary-blue) 12%, transparent);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--primary-blue) 12%, transparent);
+}
+
+.tech-grid {
+  gap: 0.75rem;
+}
+
+.tech-card {
+  min-height: 6.5rem;
+  border-radius: 999px;
+}
+
+.badge,
+.tech-card span {
+  border-color: color-mix(in srgb, var(--site-text) 16%, transparent);
+  color: var(--site-text);
+  background: color-mix(in srgb, var(--site-background) 62%, transparent);
+}
+
+.project-thumb {
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--accent-cyan) 72%, transparent),
+      color-mix(in srgb, var(--primary-blue) 62%, transparent) 42%,
+      var(--site-background)
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 12px,
+      color-mix(in srgb, var(--site-text) 15%, transparent) 12px 13px
+    );
+}
+
+.testimonial-dots button.active {
+  background: var(--accent-cyan);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent-cyan) 48%, transparent);
+}
+
+.form-field input,
+.form-field textarea {
+  border-color: var(--site-border);
+  color: var(--site-text);
+  background: var(--site-card-solid);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-cyan) 14%, transparent);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bento-stats.reveal article {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.bento-stats.reveal.visible article {
+  animation: card-fade-in-up 560ms ease forwards;
+}
+
+.bento-stats.reveal.visible article:nth-child(2) {
+  animation-delay: 70ms;
+}
+
+.bento-stats.reveal.visible article:nth-child(3) {
+  animation-delay: 140ms;
+}
+
+.bento-stats.reveal.visible article:nth-child(4) {
+  animation-delay: 210ms;
+}
+
+@keyframes cta-pulse {
+  0% {
+    transform: translateY(-2px) scale(1);
+  }
+  55% {
+    transform: translateY(-2px) scale(1.035);
+  }
+  100% {
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+@keyframes card-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .bento-stats article {
+    grid-column: span 6;
+  }
+
+  .bento-services .service-card,
+  .bento-services .service-card:nth-child(n),
+  .bento-projects .project-card,
+  .bento-projects .project-card:nth-child(n) {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 640px) {
+  .bento-stats article,
+  .bento-services .service-card,
+  .bento-services .service-card:nth-child(n),
+  .bento-projects .project-card,
+  .bento-projects .project-card:nth-child(n) {
+    grid-column: 1 / -1;
+  }
+
+  .hero-brand-pill {
+    font-size: 0.72rem;
+  }
+
+  .tech-card {
+    border-radius: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  .site-header,
+  .theme-toggle,
+  .theme-toggle-dot,
+  .theme-toggle-icon,
+  .btn,
+  .filter-bar button,
+  .service-card,
+  .project-card,
+  .tech-card,
+  .team-card,
+  .testimonial-card,
+  .values-grid article,
+  .stats article,
+  .contact-cards article,
+  .reveal {
+    scroll-behavior: auto;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal,
+  .bento-stats.reveal article {
+    opacity: 1;
+    transform: none;
+  }
+}

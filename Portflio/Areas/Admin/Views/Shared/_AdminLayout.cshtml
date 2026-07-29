@@ -1,0 +1,253 @@
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString() ?? string.Empty;
+}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark" data-bs-theme="dark" class="dark-theme">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#040814" />
+    <title>@ViewData["Title"] · إدارة LOGICORE</title>
+    <script>
+        (() => {
+            const root = document.documentElement;
+            const theme = localStorage.getItem("logicore-theme") === "light" ? "light" : "dark";
+            const language = localStorage.getItem("logicore-lang") === "en" ? "en" : "ar";
+
+            root.dataset.theme = theme;
+            root.dataset.bsTheme = theme;
+            root.classList.toggle("dark-theme", theme === "dark");
+            root.classList.toggle("light-theme", theme === "light");
+            root.lang = language;
+            root.dir = language === "ar" ? "rtl" : "ltr";
+        })();
+    </script>
+    <link id="admin-bootstrap-stylesheet" rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+</head>
+<body class="admin-body">
+    <div class="admin-shell">
+        <aside class="admin-sidebar">
+            <a class="admin-brand" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                <div class="admin-brand-icon">
+                    <i class="bi bi-shield-lock-fill"></i>
+                </div>
+                <div class="admin-brand-text">
+                    <strong>LOGICORE</strong>
+                    <small data-admin-ar="لوحة الإدارة" data-admin-en="Admin Dashboard">لوحة الإدارة</small>
+                </div>
+            </a>
+
+            <div class="admin-nav-section-title" data-admin-ar="التنقل" data-admin-en="Navigation">التنقل</div>
+
+            <nav class="admin-nav" aria-label="التنقل في لوحة الإدارة">
+                <a class="@(controller == "Dashboard" ? "active" : null)"
+                   asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                    <i class="bi bi-grid-1x2-fill"></i>
+                    <span data-admin-ar="نظرة عامة" data-admin-en="Overview">نظرة عامة</span>
+                </a>
+                <a class="@(controller == "Projects" ? "active" : null)"
+                   asp-area="Admin" asp-controller="Projects" asp-action="Index">
+                    <i class="bi bi-briefcase-fill"></i>
+                    <span data-admin-ar="المشاريع" data-admin-en="Projects">المشاريع</span>
+                </a>
+                <a class="@(controller == "Services" ? "active" : null)"
+                   asp-area="Admin" asp-controller="Services" asp-action="Index">
+                    <i class="bi bi-gear-fill"></i>
+                    <span data-admin-ar="الخدمات" data-admin-en="Services">الخدمات</span>
+                </a>
+                <a class="@(controller == "Technologies" ? "active" : null)"
+                   asp-area="Admin" asp-controller="Technologies" asp-action="Index">
+                    <i class="bi bi-cpu-fill"></i>
+                    <span data-admin-ar="التقنيات" data-admin-en="Technologies">التقنيات</span>
+                </a>
+                <a class="@(controller == "TeamMembers" ? "active" : null)"
+                   asp-area="Admin" asp-controller="TeamMembers" asp-action="Index">
+                    <i class="bi bi-people-fill"></i>
+                    <span data-admin-ar="أعضاء الفريق" data-admin-en="Team Members">أعضاء الفريق</span>
+                </a>
+                <a class="@(controller == "Testimonials" ? "active" : null)"
+                   asp-area="Admin" asp-controller="Testimonials" asp-action="Index">
+                    <i class="bi bi-chat-quote-fill"></i>
+                    <span data-admin-ar="شهادات العملاء" data-admin-en="Testimonials">شهادات العملاء</span>
+                </a>
+                <a class="@(controller == "Stats" ? "active" : null)"
+                   asp-area="Admin" asp-controller="Stats" asp-action="Index">
+                    <i class="bi bi-bar-chart-line-fill"></i>
+                    <span data-admin-ar="الإحصائيات" data-admin-en="Statistics">الإحصائيات</span>
+                </a>
+                <a class="@(controller == "Messages" ? "active" : null)"
+                   asp-area="Admin" asp-controller="Messages" asp-action="Index">
+                    <i class="bi bi-envelope-fill"></i>
+                    <span data-admin-ar="الرسائل" data-admin-en="Messages">الرسائل</span>
+                </a>
+            </nav>
+
+            <div class="admin-sidebar-footer">
+                <form asp-area="Admin" asp-controller="Account" asp-action="Logout" method="post">
+                    <button type="submit" class="btn btn-outline-light btn-sm w-100 mb-2.5 d-flex align-items-center justify-content-center gap-2 py-2 rounded-3 border-secondary-subtle">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span data-admin-ar="تسجيل الخروج" data-admin-en="Sign out">تسجيل الخروج</span>
+                    </button>
+                </form>
+                <a class="admin-site-link" asp-area="" asp-controller="Home" asp-action="Index" target="_blank">
+                    <i class="bi bi-globe"></i>
+                    <span data-admin-ar="عرض الموقع" data-admin-en="View website">عرض الموقع</span>
+                </a>
+            </div>
+        </aside>
+
+        <div class="admin-workspace">
+            <header class="admin-topbar">
+                <div class="admin-topbar-left">
+                    <button class="btn btn-sm btn-light border d-lg-none"
+                            type="button"
+                            data-sidebar-toggle
+                            aria-label="فتح قائمة التنقل">
+                        <i class="bi bi-list fs-5"></i>
+                    </button>
+                    <div class="admin-topbar-title">
+                        <small data-admin-ar="لوحة إدارة المحتوى" data-admin-en="Content Management Dashboard">لوحة إدارة المحتوى</small>
+                        <strong>@ViewData["Title"]</strong>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-3">
+                    <div class="admin-search-wrap">
+                        <i class="bi bi-search"></i>
+                        <input type="text"
+                               id="adminTableSearch"
+                               class="admin-search-input"
+                               placeholder="البحث في العناصر..."
+                               data-admin-placeholder-ar="البحث في العناصر..."
+                               data-admin-placeholder-en="Search items..."
+                               autocomplete="off" />
+                    </div>
+
+                    <div class="nav-actions">
+                        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                            <span class="icon-sun" aria-hidden="true">☀️</span>
+                            <span class="icon-moon" aria-hidden="true">🌙</span>
+                        </button>
+                        <button type="button" class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+                            <span id="lang-text">EN</span>
+                        </button>
+                    </div>
+
+                    <div class="admin-user-badge">
+                        <div class="admin-user-avatar">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <div class="admin-user-info me-1">
+                            <strong data-admin-ar="مدير النظام" data-admin-en="Administrator">مدير النظام</strong>
+                            <span data-admin-ar="حساب الإدارة" data-admin-en="Admin account">حساب الإدارة</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="admin-content">
+                @if (TempData["SuccessMessage"] is string successMessage)
+                {
+                    <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm rounded-3 d-flex align-items-center gap-2" role="alert">
+                        <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                        <div>@successMessage</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="إغلاق"></button>
+                    </div>
+                }
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (() => {
+            const root = document.documentElement;
+            const themeToggle = document.getElementById("theme-toggle");
+            const languageToggle = document.getElementById("lang-toggle");
+            const languageText = document.getElementById("lang-text");
+            const bootstrapStylesheet = document.getElementById("admin-bootstrap-stylesheet");
+            const bootstrapLtrUrl = '@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")';
+            const bootstrapRtlUrl = '@Url.Content("~/lib/bootstrap/dist/css/bootstrap.rtl.min.css")';
+
+            const applyTheme = theme => {
+                const normalizedTheme = theme === "dark" ? "dark" : "light";
+                root.dataset.theme = normalizedTheme;
+                root.dataset.bsTheme = normalizedTheme;
+                root.classList.toggle("dark-theme", normalizedTheme === "dark");
+                root.classList.toggle("light-theme", normalizedTheme === "light");
+                localStorage.setItem("logicore-theme", normalizedTheme);
+                themeToggle?.setAttribute("aria-pressed", String(normalizedTheme === "dark"));
+
+                const metaTheme = document.querySelector('meta[name="theme-color"]');
+                if (metaTheme) {
+                    metaTheme.content = normalizedTheme === "dark" ? "#040814" : "#F8FAFC";
+                }
+            };
+
+            const applyLanguage = language => {
+                const normalizedLanguage = language === "en" ? "en" : "ar";
+                root.lang = normalizedLanguage;
+                root.dir = normalizedLanguage === "ar" ? "rtl" : "ltr";
+                localStorage.setItem("logicore-lang", normalizedLanguage);
+
+                if (bootstrapStylesheet) {
+                    bootstrapStylesheet.href = normalizedLanguage === "ar"
+                        ? bootstrapRtlUrl
+                        : bootstrapLtrUrl;
+                }
+
+                document.querySelectorAll("[data-admin-ar][data-admin-en]").forEach(element => {
+                    element.textContent = normalizedLanguage === "ar"
+                        ? element.dataset.adminAr
+                        : element.dataset.adminEn;
+                });
+
+                document.querySelectorAll("[data-admin-placeholder-ar][data-admin-placeholder-en]").forEach(element => {
+                    element.placeholder = normalizedLanguage === "ar"
+                        ? element.dataset.adminPlaceholderAr
+                        : element.dataset.adminPlaceholderEn;
+                });
+
+                if (languageText) {
+                    languageText.textContent = normalizedLanguage === "ar" ? "EN" : "AR";
+                }
+                languageToggle?.setAttribute("aria-pressed", String(normalizedLanguage === "en"));
+            };
+
+            applyTheme(localStorage.getItem("logicore-theme") || "dark");
+            applyLanguage(localStorage.getItem("logicore-lang") || "ar");
+
+            themeToggle?.addEventListener("click", () => {
+                applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+            });
+
+            languageToggle?.addEventListener("click", () => {
+                applyLanguage(root.lang === "ar" ? "en" : "ar");
+            });
+        })();
+
+        // فتح وإغلاق القائمة الجانبية على الشاشات الصغيرة
+        document.querySelector("[data-sidebar-toggle]")?.addEventListener("click", () => {
+            document.body.classList.toggle("admin-sidebar-open");
+        });
+
+        // تصفية الجداول مباشرة في المتصفح
+        document.getElementById("adminTableSearch")?.addEventListener("input", function (e) {
+            const query = e.target.value.toLowerCase().trim();
+            const tableRows = document.querySelectorAll(".admin-table tbody tr");
+            
+            tableRows.forEach(row => {
+                if (row.cells.length === 1 && row.cells[0].getAttribute("colspan")) {
+                    return;
+                }
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(query) ? "" : "none";
+            });
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

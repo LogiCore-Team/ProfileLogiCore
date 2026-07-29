@@ -1,0 +1,144 @@
+@{
+    var pageName = ViewData["Page"]?.ToString() ?? "home";
+    var pageTitle = ViewData["Title"]?.ToString() ?? "Smart Software Engineering Team";
+    var pageDescription = ViewData["Description"]?.ToString()
+        ?? "LOGICORE builds smart systems, web applications, mobile apps, and enterprise software solutions.";
+}
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark" data-bs-theme="dark" class="dark-theme">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="@pageDescription">
+    <meta name="keywords" content="LOGICORE, software engineering, web applications, mobile apps, smart systems, enterprise solutions, .NET, Python">
+    <meta name="author" content="LOGICORE">
+    <meta name="theme-color" content="#040814">
+    <meta property="og:title" content="@pageTitle - LOGICORE">
+    <meta property="og:description" content="@pageDescription">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://dummyimage.com/1200x630/0f172a/06b6d4&text=LOGICORE">
+
+    <title>@pageTitle - LOGICORE</title>
+
+    <script>
+        (() => {
+            const root = document.documentElement;
+            const savedTheme = localStorage.getItem("logicore-theme");
+            const initialTheme = savedTheme === "light" ? "light" : "dark";
+
+            const syncTheme = theme => {
+                const normalizedTheme = theme === "light" ? "light" : "dark";
+                if (root.dataset.theme !== normalizedTheme) {
+                    root.dataset.theme = normalizedTheme;
+                }
+                if (root.dataset.bsTheme !== normalizedTheme) {
+                    root.dataset.bsTheme = normalizedTheme;
+                }
+                root.classList.toggle("dark-theme", normalizedTheme === "dark");
+                root.classList.toggle("light-theme", normalizedTheme === "light");
+
+                const metaTheme = document.querySelector('meta[name="theme-color"]');
+                if (metaTheme) {
+                    metaTheme.content = normalizedTheme === "dark" ? "#040814" : "#F8FAFC";
+                }
+
+                const toggle = document.querySelector("[data-theme-toggle]");
+                if (toggle) {
+                    toggle.setAttribute("aria-pressed", String(normalizedTheme === "light"));
+                }
+            };
+
+            syncTheme(initialTheme);
+            new MutationObserver(() => syncTheme(root.dataset.theme))
+                .observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+            document.addEventListener("DOMContentLoaded", () => syncTheme(root.dataset.theme));
+        })();
+    </script>
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/js/script.js" defer asp-append-version="true"></script>
+</head>
+<body data-page="@pageName">
+    <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+    <header class="site-header" id="top">
+        <nav class="nav shell" aria-label="Primary navigation" data-i18n-aria="navLabel">
+            @* <a class="brand" asp-controller="Home" asp-action="Index" asp-fragment="home" aria-label="LOGICORE home">
+                <span class="brand-mark" aria-hidden="true">LC</span>
+                <span>LOGI<span>CORE</span></span>
+            </a> *@
+            <a class="brand" asp-controller="Home" asp-action="Index" asp-fragment="home" aria-label="LOGICORE home">
+                <img src="~/Logo/WhatsApp Image 2026-07-27 at 8.11.12 AM.jpeg" alt="LOGICORE Logo" class="brand-logo-img" />
+                <span>LOGI<span>CORE</span></span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" data-i18n-aria="menuOpen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-panel" id="nav-links">
+                <a asp-controller="Home" asp-action="Index" asp-fragment="home" data-home-section="home" data-i18n="navHome">Home</a>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="about" data-home-section="about" data-i18n="navAbout">About</a>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="services" data-home-section="services" data-i18n="navServices">Services</a>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="tech" data-home-section="tech" data-i18n="navTech">Tech Stack</a>
+                <a asp-controller="Projects" asp-action="Index" data-page-link="projects" data-i18n="navPortfolio">Portfolio</a>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="team" data-home-section="team" data-i18n="navTeam">Team</a>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="testimonials" data-home-section="testimonials" data-i18n="navTestimonials">Testimonials</a>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="contact" data-home-section="contact" data-i18n="navContact">Contact</a>
+            </div>
+
+            <div class="utility-controls" aria-label="Site controls" data-i18n-aria="controlsLabel">
+                <button class="theme-toggle"
+                        type="button"
+                        data-theme-toggle
+                        data-i18n-aria="themeToggle"
+                        aria-pressed="false">
+                    <span class="theme-toggle-track" aria-hidden="true">
+                        <span class="theme-toggle-icon theme-toggle-sun">☀</span>
+                        <span class="theme-toggle-dot"></span>
+                        <span class="theme-toggle-icon theme-toggle-moon">☾</span>
+                    </span>
+                </button>
+                <div class="language-switcher" role="group" aria-label="Language" data-i18n-aria="languageLabel">
+                    <button type="button" data-lang="en" class="active">EN</button>
+                    <button type="button" data-lang="ar">AR</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <footer class="site-footer">
+        <div class="shell footer-grid">
+            <div>
+                <a class="brand" asp-controller="Home" asp-action="Index" asp-fragment="home" aria-label="LOGICORE home">
+                    <img src="~/Logo/WhatsApp Image 2026-07-27 at 8.11.12 AM.jpeg" alt="LOGICORE Logo" class="brand-logo-img" />
+                    <span>LOGI<span>CORE</span></span>
+                </a>
+                <p data-i18n="footerTagline">Built with logic &amp; code by LOGICORE.</p>
+            </div>
+            <div class="footer-links" aria-label="Footer quick links" data-i18n-aria="footerLinksLabel">
+                <a asp-controller="Home" asp-action="Index" asp-fragment="about" data-i18n="navAbout">About</a>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="services" data-i18n="navServices">Services</a>
+                <a asp-controller="Projects" asp-action="Index" data-i18n="navPortfolio">Portfolio</a>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="contact" data-i18n="navContact">Contact</a>
+            </div>
+            <div class="social-links" aria-label="Social media" data-i18n-aria="socialLabel">
+                <a href="https://github.com/logicore-dev" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://linkedin.com/company/logicore-dev" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href="https://x.com/logicoredev" target="_blank" rel="noreferrer">X</a>
+                <a href="https://discord.gg/logicore" target="_blank" rel="noreferrer">Discord</a>
+            </div>
+        </div>
+        <div class="shell footer-bottom">
+            <p>© <span data-year></span> LOGICORE. <span data-i18n="footerRights">All rights reserved.</span></p>
+            <button class="back-to-top" type="button" data-back-to-top data-i18n="backToTop">Back to Top</button>
+        </div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

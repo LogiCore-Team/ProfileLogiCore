@@ -1,0 +1,184 @@
+@model ProjectDetailsViewModel
+@{
+    ViewData["Title"] = Model.Title.English;
+    ViewData["Description"] = Model.Summary.English;
+    ViewData["Page"] = "projects";
+}
+
+<main id="main">
+    <section class="project-detail-hero section" aria-labelledby="project-title">
+        <div class="shell">
+            <nav class="breadcrumbs reveal" aria-label="Breadcrumb">
+                <a asp-controller="Home" asp-action="Index" data-i18n="navHome">Home</a>
+                <span aria-hidden="true">/</span>
+                <a asp-controller="Projects" asp-action="Index" data-i18n="projectsBreadcrumb">Projects</a>
+                <span aria-hidden="true">/</span>
+                <span data-localized data-en="@Model.Title.English" data-ar="@Model.Title.Arabic">@Model.Title.English</span>
+            </nav>
+
+            <div class="project-detail-grid">
+                <div class="reveal">
+                    <p class="eyebrow" data-localized data-en="@Model.Category.English" data-ar="@Model.Category.Arabic">@Model.Category.English</p>
+                    <h1 id="project-title" data-localized data-en="@Model.Title.English" data-ar="@Model.Title.Arabic">@Model.Title.English</h1>
+                    <p class="page-lead" data-localized data-en="@Model.Summary.English" data-ar="@Model.Summary.Arabic">@Model.Summary.English</p>
+                    <div class="hero-actions">
+                        @if (!string.IsNullOrWhiteSpace(Model.LiveDemoUrl))
+                        {
+                            <a class="btn primary" href="@Model.LiveDemoUrl" target="_blank" rel="noreferrer" data-i18n="projectDemo">Live Demo</a>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.RepositoryUrl))
+                        {
+                            <a class="btn ghost" href="@Model.RepositoryUrl" target="_blank" rel="noreferrer" data-i18n="projectGithub">Repository</a>
+                        }
+                    </div>
+                </div>
+
+                <dl class="project-facts reveal">
+                    <div>
+                        <dt data-i18n="projectClient">Client</dt>
+                        <dd>@Model.Client</dd>
+                    </div>
+                    <div>
+                        <dt data-i18n="projectDuration">Duration</dt>
+                        <dd data-localized data-en="@Model.Duration.English" data-ar="@Model.Duration.Arabic">@Model.Duration.English</dd>
+                    </div>
+                    <div>
+                        <dt data-i18n="projectDelivered">Delivered</dt>
+                        <dd>@Model.Year</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-gallery-section" aria-labelledby="gallery-heading">
+        <div class="shell">
+            <div class="gallery-heading reveal">
+                <div>
+                    <p class="eyebrow" data-i18n="projectPreviewEyebrow">Interface Preview</p>
+                    <h2 id="gallery-heading" data-i18n="projectPreviewTitle">A closer look at the product experience.</h2>
+                </div>
+                <p class="gallery-counter" aria-live="polite">
+                    <span data-gallery-current>01</span>
+                    <span>/</span>
+                    <span>@Model.Media.Count.ToString("00")</span>
+                </p>
+            </div>
+
+            <div class="project-gallery reveal" data-project-gallery>
+                <div class="gallery-viewport">
+                    @for (var index = 0; index < Model.Media.Count; index++)
+                    {
+                        var media = Model.Media[index];
+                        <figure class="gallery-slide"
+                                data-gallery-slide="@index"
+                                hidden="@(index == 0 ? null : "hidden")">
+                            <div class="gallery-art project-visual project-visual--@media.VisualVariant"
+                                 role="img"
+                                 aria-label="@media.Title.English"
+                                 data-localized-aria
+                                 data-en="@media.Title.English"
+                                 data-ar="@media.Title.Arabic">
+                                <span class="mock-sidebar"></span>
+                                <span class="mock-topbar"></span>
+                                <span class="mock-card mock-card-a"></span>
+                                <span class="mock-card mock-card-b"></span>
+                                <span class="mock-card mock-card-c"></span>
+                                <span class="mock-chart"></span>
+                                <span class="mock-table"></span>
+                            </div>
+                            <figcaption>
+                                <strong data-localized data-en="@media.Title.English" data-ar="@media.Title.Arabic">@media.Title.English</strong>
+                                <span data-localized data-en="@media.Caption.English" data-ar="@media.Caption.Arabic">@media.Caption.English</span>
+                            </figcaption>
+                        </figure>
+                    }
+                </div>
+
+                @if (Model.Media.Count > 1)
+                {
+                    <div class="gallery-controls">
+                        <button class="carousel-btn" type="button" data-gallery-prev aria-label="Previous image" data-i18n-aria="previousImage">‹</button>
+                        <div class="gallery-dots">
+                            @for (var index = 0; index < Model.Media.Count; index++)
+                            {
+                                <button type="button"
+                                        class="@(index == 0 ? "active" : null)"
+                                        data-gallery-dot="@index"
+                                        aria-label="@(index + 1)"
+                                        aria-current="@(index == 0 ? "true" : "false")"></button>
+                            }
+                        </div>
+                        <button class="carousel-btn" type="button" data-gallery-next aria-label="Next image" data-i18n-aria="nextImage">›</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section case-study-section">
+        <div class="shell case-study-grid">
+            <article class="case-study-block reveal">
+                <span class="case-study-index">01</span>
+                <div>
+                    <p class="eyebrow" data-i18n="problemEyebrow">The Challenge</p>
+                    <h2 data-i18n="problemTitle">Problem Statement</h2>
+                    <p data-localized data-en="@Model.ProblemStatement.English" data-ar="@Model.ProblemStatement.Arabic">@Model.ProblemStatement.English</p>
+                </div>
+            </article>
+            <article class="case-study-block reveal">
+                <span class="case-study-index">02</span>
+                <div>
+                    <p class="eyebrow" data-i18n="solutionEyebrow">The Response</p>
+                    <h2 data-i18n="solutionTitle">Delivered Solution</h2>
+                    <p data-localized data-en="@Model.DeliveredSolution.English" data-ar="@Model.DeliveredSolution.Arabic">@Model.DeliveredSolution.English</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="section project-features-section" aria-labelledby="features-title">
+        <div class="shell section-head reveal">
+            <p class="eyebrow" data-i18n="featuresEyebrow">Core Capabilities</p>
+            <h2 id="features-title" data-i18n="featuresTitle">Key features designed around the work.</h2>
+        </div>
+        <div class="shell feature-grid">
+            @foreach (var feature in Model.KeyFeatures)
+            {
+                <article class="feature-card reveal">
+                    <span>@feature.Number</span>
+                    <h3 data-localized data-en="@feature.Title.English" data-ar="@feature.Title.Arabic">@feature.Title.English</h3>
+                    <p data-localized data-en="@feature.Description.English" data-ar="@feature.Description.Arabic">@feature.Description.English</p>
+                </article>
+            }
+        </div>
+    </section>
+
+    <section class="section project-tech-section" aria-labelledby="technology-title">
+        <div class="shell project-tech-panel reveal">
+            <div>
+                <p class="eyebrow" data-i18n="technologyUsedEyebrow">Technology Used</p>
+                <h2 id="technology-title" data-i18n="technologyUsedTitle">A dependable stack behind the experience.</h2>
+            </div>
+            <div class="project-tech-list">
+                @foreach (var technology in Model.Technologies)
+                {
+                    <article>
+                        <strong>@technology.Name</strong>
+                        <span data-localized data-en="@technology.Note.English" data-ar="@technology.Note.Arabic">@technology.Note.English</span>
+                    </article>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section project-next-section">
+        <div class="shell project-next reveal">
+            <div>
+                <p class="eyebrow" data-i18n="exploreMoreEyebrow">Explore More</p>
+                <h2 data-i18n="exploreMoreTitle">See how LOGICORE approaches other product challenges.</h2>
+            </div>
+            <a class="btn primary" asp-controller="Projects" asp-action="Index" data-i18n="backToProjects">Back to all projects</a>
+        </div>
+    </section>
+</main>

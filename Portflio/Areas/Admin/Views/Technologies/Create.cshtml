@@ -1,0 +1,18 @@
+@model Technology
+@{
+    ViewData["Title"] = "إضافة تقنية";
+}
+
+<div class="admin-page-heading">
+    <div>
+        <h1 class="h3 mb-0">إضافة تقنية</h1>
+        <p>أضف تقنية جديدة لإتاحتها ضمن المشاريع.</p>
+    </div>
+</div>
+<form asp-action="Create" method="post" class="admin-card">
+    <partial name="_Form" model="Model" />
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

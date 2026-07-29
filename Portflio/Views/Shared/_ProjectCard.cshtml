@@ -1,0 +1,34 @@
+@model ProjectCardViewModel
+
+<article class="project-card reveal"
+         data-project-card
+         data-category="@Model.CategoryKey">
+    <div class="project-thumb project-visual project-visual--@Model.VisualVariant" aria-hidden="true">
+        <span class="preview-rail"></span>
+        <span class="preview-panel preview-panel-main"></span>
+        <span class="preview-panel preview-panel-side"></span>
+        <span class="preview-chart"></span>
+    </div>
+    <div class="project-body">
+        <div class="project-meta-line">
+            <p class="eyebrow"
+               data-localized
+               data-en="@Model.Category.English"
+               data-ar="@Model.Category.Arabic">@Model.Category.English</p>
+            <span>@Model.Year</span>
+        </div>
+        <h3 data-localized data-en="@Model.Title.English" data-ar="@Model.Title.Arabic">@Model.Title.English</h3>
+        <p data-localized data-en="@Model.Summary.English" data-ar="@Model.Summary.Arabic">@Model.Summary.English</p>
+        <div class="badge-row">
+            @foreach (var technology in Model.Technologies)
+            {
+                <span class="badge">@technology</span>
+            }
+        </div>
+        <a class="btn primary"
+           asp-controller="Projects"
+           asp-action="Details"
+           asp-route-id="@Model.Id"
+           data-i18n="viewProject">View Project</a>
+    </div>
+</article>

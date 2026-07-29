@@ -1,0 +1,54 @@
+@model Service
+
+<div asp-validation-summary="ModelOnly" class="alert alert-danger border-0 shadow-sm rounded-3"></div>
+
+<div class="admin-form-section">
+    <div class="admin-form-section-title">
+        <i class="bi bi-gear-fill"></i>
+        <span>بيانات الخدمة</span>
+    </div>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="TitleEn" class="form-label">العنوان بالإنجليزية (EN)</label>
+            <input asp-for="TitleEn" class="form-control" dir="ltr" placeholder="مثال: Custom Software Development" />
+            <span asp-validation-for="TitleEn" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6" dir="rtl">
+            <label asp-for="TitleAr" class="form-label">العنوان بالعربية (AR)</label>
+            <input asp-for="TitleAr" class="form-control" placeholder="مثال: تطوير البرمجيات المخصصة" />
+            <span asp-validation-for="TitleAr" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="DescriptionEn" class="form-label">الوصف بالإنجليزية (EN)</label>
+            <textarea asp-for="DescriptionEn" class="form-control" rows="5" dir="ltr" placeholder="اكتب وصف الخدمة بالإنجليزية..."></textarea>
+            <span asp-validation-for="DescriptionEn" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6" dir="rtl">
+            <label asp-for="DescriptionAr" class="form-label">الوصف بالعربية (AR)</label>
+            <textarea asp-for="DescriptionAr" class="form-control" rows="5" placeholder="وصف الخدمة باللغة العربية..."></textarea>
+            <span asp-validation-for="DescriptionAr" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="IconClass" class="form-label">فئة الأيقونة (Bootstrap / FontAwesome)</label>
+            <input asp-for="IconClass" class="form-control" dir="ltr" placeholder="مثال: bi bi-code-slash" />
+            <span asp-validation-for="IconClass" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="DisplayOrder" class="form-label">ترتيب العرض</label>
+            <input asp-for="DisplayOrder" class="form-control" min="0" />
+            <span asp-validation-for="DisplayOrder" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-3 d-flex align-items-end pb-1">
+            <div class="form-check p-3 border rounded-3 bg-light w-100">
+                <input asp-for="IsActive" class="form-check-input ms-0 me-2" />
+                <label asp-for="IsActive" class="form-check-label fw-semibold text-dark">نشطة</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex gap-2 mt-4">
+    <button class="btn btn-primary px-4 py-2 rounded-3 fw-semibold shadow-sm" type="submit">
+        <i class="bi bi-check-lg me-1"></i>حفظ الخدمة
+    </button>
+    <a class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold" asp-action="Index">إلغاء</a>
+</div>

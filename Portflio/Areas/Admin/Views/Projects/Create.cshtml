@@ -1,0 +1,19 @@
+@model ProjectFormViewModel
+@{
+    ViewData["Title"] = "إضافة مشروع";
+}
+
+<div class="admin-page-heading">
+    <div>
+        <h1 class="h3 mb-0">إضافة مشروع</h1>
+        <p>أضف محتوى المشروع ووسائطه وميزاته والتقنيات المرتبطة به.</p>
+    </div>
+</div>
+
+<form asp-action="Create" method="post" class="admin-card">
+    <partial name="_ProjectForm" model="Model" />
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

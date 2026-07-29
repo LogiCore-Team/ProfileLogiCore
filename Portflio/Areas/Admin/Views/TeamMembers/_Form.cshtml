@@ -1,0 +1,70 @@
+@model TeamMember
+
+<div asp-validation-summary="ModelOnly" class="alert alert-danger border-0 shadow-sm rounded-3"></div>
+
+<div class="admin-form-section">
+    <div class="admin-form-section-title">
+        <i class="bi bi-person-fill border-0"></i>
+        <span>بيانات عضو الفريق</span>
+    </div>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="NameEn" class="form-label">الاسم بالإنجليزية (EN)</label>
+            <input asp-for="NameEn" class="form-control" dir="ltr" placeholder="مثال: Alex Morgan" />
+            <span asp-validation-for="NameEn" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6" dir="rtl">
+            <label asp-for="NameAr" class="form-label">الاسم بالعربية (AR)</label>
+            <input asp-for="NameAr" class="form-control" placeholder="مثال: أليكس مورجان" />
+            <span asp-validation-for="NameAr" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="RoleEn" class="form-label">الدور بالإنجليزية (EN)</label>
+            <input asp-for="RoleEn" class="form-control" dir="ltr" placeholder="مثال: Senior Full Stack Engineer" />
+            <span asp-validation-for="RoleEn" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6" dir="rtl">
+            <label asp-for="RoleAr" class="form-label">الدور بالعربية (AR)</label>
+            <input asp-for="RoleAr" class="form-control" placeholder="مثال: مهندس برمجيات متكامل" />
+            <span asp-validation-for="RoleAr" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-12">
+            <label asp-for="ProfileImageUrl" class="form-label">رابط الصورة الشخصية</label>
+            <input asp-for="ProfileImageUrl" class="form-control" dir="ltr" placeholder="https://..." />
+            <span asp-validation-for="ProfileImageUrl" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-12">
+            <label asp-for="SkillsCsv" class="form-label">المهارات (مفصولة بفواصل)</label>
+            <input asp-for="SkillsCsv" class="form-control" dir="ltr" placeholder="C#, .NET 8, React, Azure, Docker" />
+            <div class="form-text">افصل المهارات بفواصل، مثال: JavaScript, C#, SQL.</div>
+            <span asp-validation-for="SkillsCsv" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="GitHubUrl" class="form-label">رابط ملف GitHub</label>
+            <input asp-for="GitHubUrl" class="form-control" dir="ltr" placeholder="https://github.com/username" />
+            <span asp-validation-for="GitHubUrl" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="LinkedInUrl" class="form-label">رابط ملف LinkedIn</label>
+            <input asp-for="LinkedInUrl" class="form-control" dir="ltr" placeholder="https://linkedin.com/in/username" />
+            <span asp-validation-for="LinkedInUrl" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="DisplayOrder" class="form-label">ترتيب العرض</label>
+            <input asp-for="DisplayOrder" class="form-control" min="0" />
+            <span asp-validation-for="DisplayOrder" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6 d-flex align-items-end pb-1">
+            <div class="form-check p-3 border rounded-3 bg-light w-100">
+                <input asp-for="IsActive" class="form-check-input ms-0 me-2" />
+                <label asp-for="IsActive" class="form-check-label fw-semibold text-dark">نشط</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex gap-2 mt-4">
+    <button class="btn btn-primary px-4 py-2 rounded-3 fw-semibold shadow-sm" type="submit">
+        <i class="bi bi-check-lg me-1"></i>حفظ عضو الفريق
+    </button>
+    <a class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold" asp-action="Index">إلغاء</a>
+</div>

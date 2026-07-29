@@ -1,0 +1,20 @@
+@model Testimonial
+@{
+    ViewData["Title"] = "تعديل شهادة العميل";
+}
+
+<div class="admin-page-heading">
+    <div>
+        <h1 class="h3 mb-0">تعديل شهادة العميل</h1>
+        <p>حدّث بيانات العميل ونص الشهادة.</p>
+    </div>
+</div>
+
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post" class="admin-card">
+    <input asp-for="Id" type="hidden" />
+    <partial name="_Form" model="Model" />
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

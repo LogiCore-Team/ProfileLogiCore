@@ -1,0 +1,39 @@
+@model StatItem
+
+<div asp-validation-summary="ModelOnly" class="alert alert-danger border-0 shadow-sm rounded-3"></div>
+
+<div class="admin-form-section">
+    <div class="admin-form-section-title">
+        <i class="bi bi-bar-chart-line-fill"></i>
+        <span>بيانات الإحصائية</span>
+    </div>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="Value" class="form-label">قيمة المؤشر</label>
+            <input asp-for="Value" class="form-control" dir="ltr" placeholder="مثال: 24h, 92, 96%, +48" required />
+            <span asp-validation-for="Value" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="DisplayOrder" class="form-label">ترتيب العرض</label>
+            <input asp-for="DisplayOrder" class="form-control" min="0" required />
+            <span asp-validation-for="DisplayOrder" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="LabelEn" class="form-label">العنوان بالإنجليزية (EN)</label>
+            <input asp-for="LabelEn" class="form-control" dir="ltr" placeholder="مثال: Projects Delivered" required />
+            <span asp-validation-for="LabelEn" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-md-6" dir="rtl">
+            <label asp-for="LabelAr" class="form-label">العنوان بالعربية (AR)</label>
+            <input asp-for="LabelAr" class="form-control" placeholder="مثال: مشروعاً منجزاً" required />
+            <span asp-validation-for="LabelAr" class="text-danger small ms-1"></span>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex gap-2 mt-4">
+    <button class="btn btn-primary px-4 py-2 rounded-3 fw-semibold shadow-sm" type="submit">
+        <i class="bi bi-check-lg me-1"></i>حفظ الإحصائية
+    </button>
+    <a class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold" asp-action="Index">إلغاء</a>
+</div>
