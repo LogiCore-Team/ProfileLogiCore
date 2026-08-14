@@ -59,6 +59,8 @@
       teamIntro: "A compact team covering architecture, experience design, backend systems, mobile delivery, and intelligent automation.",
       testimonialsEyebrow: "Client Success",
       testimonialsTitle: "Teams choose LOGICORE when software has to work beautifully.",
+      noTestimonialsTitle: "No Testimonials Yet",
+      noTestimonials: "Client testimonials will appear here once added from the admin panel.",
       prevTestimonial: "Previous testimonial",
       nextTestimonial: "Next testimonial",
       testimonialDots: "Testimonial slides",
@@ -181,6 +183,8 @@
       teamIntro: "فريق صغير يغطي البنية وتصميم التجربة وأنظمة الخلفية وتطبيقات الجوال والأتمتة الذكية.",
       testimonialsEyebrow: "نجاح العملاء",
       testimonialsTitle: "تختار الفرق LOGICORE عندما يجب أن تعمل البرمجيات بجمال وثبات.",
+      noTestimonialsTitle: "لا تتوفر شهادات حالياً",
+      noTestimonials: "ستظهر شهادات وآراء العملاء هنا فور إضافتها من لوحة الإدارة.",
       prevTestimonial: "الرأي السابق",
       nextTestimonial: "الرأي التالي",
       testimonialDots: "شرائح آراء العملاء",
@@ -271,7 +275,7 @@
     localStorage.setItem("logicore-theme", state.theme);
     const metaTheme = $('meta[name="theme-color"]');
     if (metaTheme) {
-      metaTheme.content = state.theme === "dark" ? "#0F172A" : "#FFFFFF";
+      metaTheme.content = state.theme === "dark" ? "#0F172A" : "#F5F0E6";
     }
   }
 

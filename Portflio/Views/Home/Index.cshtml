@@ -322,34 +322,54 @@
             <p class="eyebrow" data-i18n="testimonialsEyebrow">Client Success</p>
             <h2 id="testimonials-title" data-i18n="testimonialsTitle">Teams choose LOGICORE when software has to work beautifully.</h2>
         </div>
-        <div class="shell testimonial-wrap reveal">
-            <button class="carousel-btn" type="button" data-testimonial-prev aria-label="Previous testimonial" data-i18n-aria="prevTestimonial">‹</button>
-            <div class="testimonial-viewport" data-testimonial>
-                @for (var index = 0; index < Model.Testimonials.Count; index++)
+
+        @if (Model.Testimonials.Count > 0)
+        {
+            <div class="shell testimonials-grid reveal">
+                @foreach (var testimonial in Model.Testimonials)
                 {
-                    var testimonial = Model.Testimonials[index];
-                    <article class="testimonial-card" data-testimonial-slide="@index" hidden="@(index == 0 ? null : "hidden")">
-                        <div class="rating" aria-label="@testimonial.Rating out of 5 stars">@(new string('★', testimonial.Rating))</div>
-                        <p>“<span data-localized data-en="@testimonial.Quote.English" data-ar="@testimonial.Quote.Arabic">@testimonial.Quote.English</span>”</p>
+                    var nameEn = testimonial.Name.English;
+                    var nameParts = nameEn.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                    var initials = nameParts.Length > 0
+                        ? string.Concat(nameParts.Take(2).Select(p => char.ToUpperInvariant(p[0])))
+                        : "LC";
+
+                    <article class="testimonial-card">
+                        <div class="card-top">
+                            <div class="rating" aria-label="@testimonial.Rating out of 5 stars">
+                                @(new string('★', testimonial.Rating))
+                            </div>
+                            <span class="testimonial-avatar">@initials</span>
+                        </div>
+                        <p class="quote-text">
+                            “<span class="loc-en">@testimonial.Quote.English</span><span class="loc-ar">@testimonial.Quote.Arabic</span>”
+                        </p>
                         <div class="testimonial-meta">
-                            <strong data-localized data-en="@testimonial.Name.English" data-ar="@testimonial.Name.Arabic">@testimonial.Name.English</strong>
-                            <span data-localized data-en="@testimonial.Company.English" data-ar="@testimonial.Company.Arabic">@testimonial.Company.English</span>
+                            <strong class="client-name">
+                                <span class="loc-en">@testimonial.Name.English</span>
+                                <span class="loc-ar">@testimonial.Name.Arabic</span>
+                            </strong>
+                            <span class="client-company">
+                                <span class="loc-en">@testimonial.Company.English</span>
+                                <span class="loc-ar">@testimonial.Company.Arabic</span>
+                            </span>
                         </div>
                     </article>
                 }
             </div>
-            <button class="carousel-btn" type="button" data-testimonial-next aria-label="Next testimonial" data-i18n-aria="nextTestimonial">›</button>
-        </div>
-        <div class="testimonial-dots" data-testimonial-dots aria-label="Testimonial slides" data-i18n-aria="testimonialDots">
-            @for (var index = 0; index < Model.Testimonials.Count; index++)
-            {
-                <button type="button"
-                        class="@(index == 0 ? "active" : null)"
-                        data-testimonial-dot="@index"
-                        aria-label="@(index + 1)"
-                        aria-current="@(index == 0 ? "true" : "false")"></button>
-            }
-        </div>
+        }
+        else
+        {
+            <div class="shell testimonials-empty-state reveal">
+                <div class="empty-icon-box">
+                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 data-i18n="noTestimonialsTitle">لا تتوفر شهادات حالياً</h3>
+                <p data-i18n="noTestimonials">ستظهر شهادات وآراء العملاء هنا فور إضافتها من لوحة الإدارة.</p>
+            </div>
+        }
     </section>
 
     <section class="section contact-section" id="contact" aria-labelledby="contact-title">

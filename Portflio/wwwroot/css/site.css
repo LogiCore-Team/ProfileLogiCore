@@ -39,18 +39,18 @@ html[data-theme="light"],
 html[data-bs-theme="light"],
 html.light-theme {
   color-scheme: light;
-  --bg-card-glass: #FFFFFF;
-  --site-background: #F8FAFC;
-  --site-card: #FFFFFF;
-  --site-card-solid: #FFFFFF;
+  --bg-card-glass: rgba(255, 253, 248, 0.88);
+  --site-background: #F5F0E6;
+  --site-card: rgba(255, 253, 248, 0.92);
+  --site-card-solid: #FAF7F0;
   --site-text: #0F172A;
   --site-muted: color-mix(in srgb, var(--site-text) 68%, transparent);
-  --site-border: color-mix(in srgb, var(--primary-blue) 22%, transparent);
-  --site-surface-soft: color-mix(in srgb, var(--primary-blue) 6%, #FFFFFF);
+  --site-border: rgba(0, 117, 255, 0.16);
+  --site-surface-soft: #EBE4D5;
   --site-heading-start: #0F172A;
   --site-on-accent: #040814;
-  --site-shadow: 0 18px 48px color-mix(in srgb, var(--primary-blue) 11%, transparent);
-  --site-glow: 0 0 25px color-mix(in srgb, var(--accent-cyan) 22%, transparent);
+  --site-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+  --site-glow: 0 0 25px rgba(0, 117, 255, 0.15);
 
   --cyan: var(--accent-cyan);
   --cyan-strong: var(--primary-blue);
@@ -74,10 +74,10 @@ body {
   background:
     radial-gradient(
       circle at 10% 4%,
-      color-mix(in srgb, var(--primary-blue) 13%, transparent),
+      rgba(0, 117, 255, 0.08),
       transparent 30rem
     ),
-    var(--site-background);
+    linear-gradient(135deg, #F8F4EB, #F2EBDC 54%, #EBE3D3);
   transition: background-color 300ms ease, color 300ms ease;
 }
 
