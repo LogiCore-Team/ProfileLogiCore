@@ -34,6 +34,22 @@
                 <span class="text-muted">—</span>
             }
         </dd>
+        <dt>أيقونة SVG</dt>
+        <dd>
+            @if (!string.IsNullOrWhiteSpace(Model.IconSvg))
+            {
+                <div class="p-3 border rounded-3 bg-dark d-inline-flex align-items-center gap-3 mb-2">
+                    <div style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; color: #38bdf8;">
+                        @Html.Raw(Model.IconSvg)
+                    </div>
+                    <span class="badge bg-success-subtle text-success">SVG صالح</span>
+                </div>
+            }
+            else
+            {
+                <span class="text-muted">—</span>
+            }
+        </dd>
         <dt>رابط الصورة</dt>
         <dd>
             @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))

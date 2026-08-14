@@ -349,6 +349,16 @@
 
     $$("a", navPanel).forEach((link) => link.addEventListener("click", closeMenu));
 
+    document.addEventListener("click", (e) => {
+      if (
+        navPanel.classList.contains("open") &&
+        !navPanel.contains(e.target) &&
+        !menuToggle.contains(e.target)
+      ) {
+        closeMenu();
+      }
+    });
+
     const projectsLink = $('[data-page-link="projects"]', navPanel);
     if (projectsLink && document.body.dataset.page === "projects") {
       projectsLink.classList.add("active");
@@ -356,7 +366,7 @@
 
     if (document.body.dataset.page !== "home") return;
 
-    const sectionLinks = $$("[data-home-section]", navPanel);
+    const sectionLinks = $$("[data-home-section]");
     const sections = $$("main section[id]");
     if (!sectionLinks.length || !sections.length) return;
 

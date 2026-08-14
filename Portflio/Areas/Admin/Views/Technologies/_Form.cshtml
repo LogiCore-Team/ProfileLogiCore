@@ -1,5 +1,48 @@
 @model Technology
 
+<style>
+    .svg-code-input {
+        direction: ltr !important;
+        text-align: left !important;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 0.9rem;
+        background-color: #0f172a !important;
+        color: #38bdf8 !important;
+        border: 1px solid rgba(56, 189, 248, 0.25) !important;
+        border-radius: 8px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .svg-code-input:focus {
+        background-color: #0f172a !important;
+        color: #38bdf8 !important;
+        border-color: #38bdf8 !important;
+        box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.2) !important;
+    }
+    .svg-preview-wrapper {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    .svg-preview {
+        width: 96px;
+        height: 96px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px dashed rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        color: #38bdf8;
+    }
+    .svg-preview svg {
+        width: 72px;
+        height: 72px;
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+
 <div asp-validation-summary="ModelOnly" class="alert alert-danger border-0 shadow-sm rounded-3"></div>
 
 <div class="admin-form-section">
@@ -14,14 +57,25 @@
             <span asp-validation-for="Name" class="text-danger small ms-1"></span>
         </div>
         <div class="col-md-6">
-            <label asp-for="IconClass" class="form-label">فئة الأيقونة</label>
+            <label asp-for="IconClass" class="form-label">فئة الأيقونة (اختياري)</label>
             <input asp-for="IconClass" class="form-control" dir="ltr" placeholder="مثال: bi bi-filetype-js" />
             <span asp-validation-for="IconClass" class="text-danger small ms-1"></span>
         </div>
         <div class="col-12">
-            <label asp-for="ImageUrl" class="form-label">رابط الصورة (اختياري)</label>
-            <input asp-for="ImageUrl" class="form-control" dir="ltr" placeholder="https://..." />
-            <span asp-validation-for="ImageUrl" class="text-danger small ms-1"></span>
+            <label asp-for="IconSvg" class="form-label fw-semibold">أيقونة التقنية (SVG)</label>
+            <textarea asp-for="IconSvg" id="IconSvg" class="form-control svg-code-input" rows="6" placeholder='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">...</svg>'></textarea>
+            <span asp-validation-for="IconSvg" class="text-danger small ms-1"></span>
+        </div>
+        <div class="col-12 mt-3">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <label class="form-label mb-0 fw-semibold">معاينة الأيقونة</label>
+                <span id="svgStatusBadge" class="badge bg-secondary px-3 py-2 fs-7 rounded-pill">لا يوجد أيقونة</span>
+            </div>
+            <div class="svg-preview-wrapper p-3 d-flex align-items-center justify-content-center">
+                <div id="svgPreviewContainer" class="svg-preview">
+                    <span class="text-muted small">المعاينة هنا</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -31,3 +85,48 @@
     </button>
     <a class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold" asp-action="Index">إلغاء</a>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const svgInput = document.getElementById("IconSvg");
+        const previewContainer = document.getElementById("svgPreviewContainer");
+        const statusBadge = document.getElementById("svgStatusBadge");
+
+        if (!svgInput || !previewContainer || !statusBadge) return;
+
+        function validateAndPreview() {
+            const rawVal = svgInput.value ? svgInput.value.trim() : "";
+
+            if (!rawVal) {
+                statusBadge.textContent = "لا يوجد أيقونة";
+                statusBadge.className = "badge bg-secondary px-3 py-2 fs-7 rounded-pill";
+                previewContainer.innerHTML = '<span class="text-muted small">المعاينة هنا</span>';
+                return;
+            }
+
+            const lower = rawVal.toLowerCase();
+            const hasSvgStart = lower.includes("<svg");
+            const hasSvgEnd = lower.includes("</svg>");
+            const hasScript = lower.includes("<script") || lower.includes("javascript:");
+
+            if (hasSvgStart && hasSvgEnd && !hasScript) {
+                statusBadge.textContent = "✓ SVG صالح";
+                statusBadge.className = "badge bg-success px-3 py-2 fs-7 rounded-pill";
+                previewContainer.innerHTML = rawVal;
+            } else {
+                statusBadge.textContent = "⚠ SVG غير صالح";
+                statusBadge.className = "badge bg-danger px-3 py-2 fs-7 rounded-pill";
+                previewContainer.innerHTML = '<span class="text-danger small">كود SVG غير صالح</span>';
+            }
+        }
+
+        svgInput.addEventListener("input", validateAndPreview);
+        svgInput.addEventListener("paste", function () {
+            setTimeout(validateAndPreview, 50);
+        });
+        svgInput.addEventListener("keyup", validateAndPreview);
+
+        // Initial preview on edit load
+        validateAndPreview();
+    });
+</script>

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Portflio.Data;
 using Portflio.Data.Entities;
+using Portflio.Services;
 
 namespace Portflio.Areas.Admin.Controllers;
 
@@ -27,9 +28,10 @@ public sealed class TechnologiesController(ApplicationDbContext dbContext) : Con
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
-        [Bind("Name,IconClass,ImageUrl")] Technology technology)
+        [Bind("Name,IconClass,ImageUrl,IconSvg")] Technology technology)
     {
         await ValidateUniqueNameAsync(technology.Name);
+        ProcessSvgInput(technology);
 
         if (!ModelState.IsValid)
         {
@@ -53,7 +55,7 @@ public sealed class TechnologiesController(ApplicationDbContext dbContext) : Con
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(
         int id,
-        [Bind("Id,Name,IconClass,ImageUrl")] Technology technology)
+        [Bind("Id,Name,IconClass,ImageUrl,IconSvg")] Technology technology)
     {
         if (id != technology.Id)
         {
@@ -61,6 +63,7 @@ public sealed class TechnologiesController(ApplicationDbContext dbContext) : Con
         }
 
         await ValidateUniqueNameAsync(technology.Name, technology.Id);
+        ProcessSvgInput(technology);
 
         if (!ModelState.IsValid)
         {
@@ -122,5 +125,29 @@ public sealed class TechnologiesController(ApplicationDbContext dbContext) : Con
         {
             ModelState.AddModelError(nameof(Technology.Name), "يجب أن يكون اسم التقنية فريدًا.");
         }
+    }
+
+    private void ProcessSvgInput(Technology technology)
+    {
+        if (string.IsNullOrWhiteSpace(technology.IconSvg))
+        {
+            technology.IconSvg = null;
+            return;
+        }
+
+        if (!SvgSanitizer.IsValidSvg(technology.IconSvg))
+        {
+            ModelState.AddModelError(nameof(Technology.IconSvg), "كود SVG غير صالح. يجب أن يضم وسوم <svg> و </svg> بشكل صحيح.");
+            return;
+        }
+
+        var sanitized = SvgSanitizer.Sanitize(technology.IconSvg);
+        if (string.IsNullOrWhiteSpace(sanitized))
+        {
+            ModelState.AddModelError(nameof(Technology.IconSvg), "يحتوي كود SVG على وسوم أو عناصر غير آمنة.");
+            return;
+        }
+
+        technology.IconSvg = sanitized;
     }
 }

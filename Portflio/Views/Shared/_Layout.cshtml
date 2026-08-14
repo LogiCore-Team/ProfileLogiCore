@@ -8,7 +8,7 @@
 <html lang="en" dir="ltr" data-theme="dark" data-bs-theme="dark" class="dark-theme">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="@pageDescription">
     <meta name="keywords" content="LOGICORE, software engineering, web applications, mobile apps, smart systems, enterprise solutions, .NET, Python">
     <meta name="author" content="LOGICORE">
@@ -63,13 +63,9 @@
 
     <header class="site-header" id="top">
         <nav class="nav shell" aria-label="Primary navigation" data-i18n-aria="navLabel">
-            @* <a class="brand" asp-controller="Home" asp-action="Index" asp-fragment="home" aria-label="LOGICORE home">
-                <span class="brand-mark" aria-hidden="true">LC</span>
-                <span>LOGI<span>CORE</span></span>
-            </a> *@
             <a class="brand" asp-controller="Home" asp-action="Index" asp-fragment="home" aria-label="LOGICORE home">
                 <img src="~/Logo/logicore-logo.png" alt="LOGICORE Logo" class="brand-logo-img" />
-                <span>LOGI<span>CORE</span></span>
+                <span class="brand-text">LOGI<span class="brand-accent">CORE</span></span>
             </a>
 
             <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" data-i18n-aria="menuOpen">
@@ -86,10 +82,16 @@
                 <a asp-controller="Projects" asp-action="Index" data-page-link="projects" data-i18n="navPortfolio">Portfolio</a>
                 <a asp-controller="Home" asp-action="Index" asp-fragment="team" data-home-section="team" data-i18n="navTeam">Team</a>
                 <a asp-controller="Home" asp-action="Index" asp-fragment="testimonials" data-home-section="testimonials" data-i18n="navTestimonials">Testimonials</a>
-                <a asp-controller="Home" asp-action="Index" asp-fragment="contact" data-home-section="contact" data-i18n="navContact">Contact</a>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="contact" data-home-section="contact" data-i18n="navContact" class="mobile-only-contact">Contact</a>
             </div>
 
             <div class="utility-controls" aria-label="Site controls" data-i18n-aria="controlsLabel">
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="btn btn-sm btn-outline-info rounded-pill px-3 py-1 me-1 text-decoration-none">
+                        Dashboard
+                    </a>
+                }
                 <button class="theme-toggle"
                         type="button"
                         data-theme-toggle
@@ -105,6 +107,7 @@
                     <button type="button" data-lang="en" class="active">EN</button>
                     <button type="button" data-lang="ar">AR</button>
                 </div>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="contact" data-home-section="contact" data-i18n="navContact" class="nav-cta-btn">Contact Us</a>
             </div>
         </nav>
     </header>
@@ -116,7 +119,7 @@
             <div>
                 <a class="brand" asp-controller="Home" asp-action="Index" asp-fragment="home" aria-label="LOGICORE home">
                     <img src="~/Logo/logicore-logo.png" alt="LOGICORE Logo" class="brand-logo-img" />
-                    <span>LOGI<span>CORE</span></span>
+                    <span class="brand-text">LOGI<span class="brand-accent">CORE</span></span>
                 </a>
                 <p data-i18n="footerTagline">Built with logic &amp; code by LOGICORE.</p>
             </div>

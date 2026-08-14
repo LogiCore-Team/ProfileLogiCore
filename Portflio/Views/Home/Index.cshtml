@@ -123,7 +123,7 @@
                         <div class="device-body device-logo-only-body">
                             <div class="device-logo-hero-showcase">
                                 <div class="logo-glow-backdrop"></div>
-                                <img src="~/Logo/logicore-logo.png" alt="LOGICORE Logo" class="device-3d-logo-large" />
+                                <img src="~/Logo/اطار_-removebg-preview.png" alt="LOGICORE Logo" class="device-3d-logo-large" />
                             </div>
                         </div>
 
@@ -237,6 +237,20 @@
             @foreach (var technology in Model.Technologies)
             {
                 <article class="tech-card reveal" data-filter-item data-category="@technology.CategoryKey">
+                    @if (!string.IsNullOrWhiteSpace(technology.IconSvg))
+                    {
+                        <div class="tech-card-icon">
+                            @Html.Raw(technology.IconSvg)
+                        </div>
+                    }
+                    else if (!string.IsNullOrWhiteSpace(technology.ImageUrl))
+                    {
+                        <img src="@technology.ImageUrl" alt="@technology.Name" style="width: 2.5rem; height: 2.5rem; object-fit: contain;" />
+                    }
+                    else if (!string.IsNullOrWhiteSpace(technology.IconClass))
+                    {
+                        <i class="@technology.IconClass fs-3 text-primary"></i>
+                    }
                     <strong>@technology.Name</strong>
                     <span data-localized data-en="@technology.Note.English" data-ar="@technology.Note.Arabic">@technology.Note.English</span>
                 </article>

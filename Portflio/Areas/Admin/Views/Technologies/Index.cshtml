@@ -21,7 +21,7 @@
                 <tr>
                     <th>اسم التقنية</th>
                     <th>فئة الأيقونة</th>
-                    <th>حالة الصورة</th>
+                    <th>الأيقونة</th>
                     <th>المشاريع المرتبطة</th>
                     <th class="text-end">الإجراءات</th>
                 </tr>
@@ -53,15 +53,24 @@
                             }
                         </td>
                         <td>
-                            @if (technology.ImageUrl is null)
+                            @if (!string.IsNullOrWhiteSpace(technology.IconSvg))
                             {
-                                <span class="badge badge-hidden">بلا صورة</span>
+                                <div class="d-inline-flex align-items-center gap-2">
+                                    <div style="width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; color: #38bdf8;">
+                                        @Html.Raw(technology.IconSvg)
+                                    </div>
+                                    <span class="badge bg-primary-subtle text-primary">SVG</span>
+                                </div>
+                            }
+                            else if (!string.IsNullOrWhiteSpace(technology.ImageUrl))
+                            {
+                                <span class="badge badge-active">
+                                    <i class="bi bi-image me-1"></i>صورة
+                                </span>
                             }
                             else
                             {
-                                <span class="badge badge-active">
-                                    <i class="bi bi-image me-1"></i>مضافة
-                                </span>
+                                <span class="badge badge-hidden">بلا أيقونة</span>
                             }
                         </td>
                         <td>

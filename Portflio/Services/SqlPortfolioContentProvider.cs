@@ -37,7 +37,10 @@ public sealed class SqlPortfolioContentProvider(ApplicationDbContext dbContext)
             .Select(technology => new TechnologyViewModel(
                 technology.Name,
                 "all",
-                L(technology.IconClass ?? string.Empty, technology.IconClass ?? string.Empty)))
+                L(technology.IconClass ?? string.Empty, technology.IconClass ?? string.Empty),
+                technology.IconSvg,
+                technology.ImageUrl,
+                technology.IconClass))
             .ToList();
 
         var teamMembers = dbContext.TeamMembers
@@ -135,7 +138,10 @@ public sealed class SqlPortfolioContentProvider(ApplicationDbContext dbContext)
             .Select(technology => new TechnologyViewModel(
                 technology.Name,
                 "all",
-                L(technology.IconClass ?? string.Empty, technology.IconClass ?? string.Empty)))
+                L(technology.IconClass ?? string.Empty, technology.IconClass ?? string.Empty),
+                technology.IconSvg,
+                technology.ImageUrl,
+                technology.IconClass))
             .ToList();
 
         return new ProjectDetailsViewModel(

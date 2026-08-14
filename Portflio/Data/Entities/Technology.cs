@@ -14,5 +14,7 @@ public sealed class Technology
     [Url, StringLength(2048)]
     public string? ImageUrl { get; set; }
 
+    public string? IconSvg { get; set; }
+
     public ICollection<ProjectTechnology> ProjectTechnologies { get; set; } = [];
 }

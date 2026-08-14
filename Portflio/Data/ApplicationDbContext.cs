@@ -73,6 +73,7 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
             entity.Property(technology => technology.Name).HasMaxLength(100).IsRequired();
             entity.Property(technology => technology.IconClass).HasMaxLength(200);
             entity.Property(technology => technology.ImageUrl).HasMaxLength(2048);
+            entity.Property(technology => technology.IconSvg);
             entity.HasIndex(technology => technology.Name).IsUnique();
         });
 
