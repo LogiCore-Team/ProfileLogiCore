@@ -48,6 +48,16 @@ public sealed class SqlPortfolioContentProvider(ApplicationDbContext dbContext)
             .Where(member => member.IsActive)
             .OrderBy(member => member.DisplayOrder)
             .ThenBy(member => member.Id)
+            .Select(member => new
+            {
+                member.NameEn,
+                member.NameAr,
+                member.RoleEn,
+                member.RoleAr,
+                member.SkillsCsv,
+                member.GitHubUrl,
+                member.LinkedInUrl
+            })
             .ToList()
             .Select(member => new TeamMemberViewModel(
                 GetInitials(member.NameEn),
@@ -56,6 +66,29 @@ public sealed class SqlPortfolioContentProvider(ApplicationDbContext dbContext)
                 ParseSkills(member.SkillsCsv),
                 member.GitHubUrl ?? string.Empty,
                 member.LinkedInUrl ?? string.Empty))
+            .ToList();
+
+        var testimonials = dbContext.Testimonials
+            .AsNoTracking()
+            .Where(testimonial => testimonial.IsActive)
+            .OrderBy(testimonial => testimonial.DisplayOrder)
+            .ThenBy(testimonial => testimonial.Id)
+            .Select(testimonial => new
+            {
+                testimonial.QuoteEn,
+                testimonial.QuoteAr,
+                testimonial.NameEn,
+                testimonial.NameAr,
+                testimonial.CompanyEn,
+                testimonial.CompanyAr,
+                testimonial.Rating
+            })
+            .ToList()
+            .Select(testimonial => new TestimonialViewModel(
+                L(testimonial.QuoteEn, testimonial.QuoteAr),
+                L(testimonial.NameEn, testimonial.NameAr),
+                L(testimonial.CompanyEn, testimonial.CompanyAr),
+                testimonial.Rating))
             .ToList();
 
         var stats = dbContext.StatItems
@@ -74,7 +107,7 @@ public sealed class SqlPortfolioContentProvider(ApplicationDbContext dbContext)
             projects.Select(ToCard).ToList(),
             BuildCategoryFilters(projects.Select(project => project.Category)),
             teamMembers,
-            [],
+            testimonials,
             stats);
     }
 
@@ -234,6 +267,10 @@ public sealed class SqlPortfolioContentProvider(ApplicationDbContext dbContext)
             new string(characters).Split('-', StringSplitOptions.RemoveEmptyEntries));
     }
 
-    private static LocalizedTextViewModel L(string english, string arabic) =>
-        new(english, arabic);
+    private static LocalizedTextViewModel L(string? english, string? arabic)
+    {
+        var en = string.IsNullOrWhiteSpace(english) ? (arabic ?? string.Empty) : english;
+        var ar = string.IsNullOrWhiteSpace(arabic) ? (english ?? string.Empty) : arabic;
+        return new LocalizedTextViewModel(en, ar);
+    }
 }

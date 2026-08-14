@@ -13,9 +13,17 @@ builder.Services.AddAuthentication(
         options.LoginPath = "/Admin/Account/Login";
     });
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")
-        ?? throw new InvalidOperationException(
-            "Connection string 'DefaultConnection' was not found.")));
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+            ?? throw new InvalidOperationException("Connection string 'DefaultConnection' was not found."),
+        npgsqlOptions =>
+        {
+            npgsqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: TimeSpan.FromSeconds(10),
+                errorCodesToAdd: null);
+            npgsqlOptions.CommandTimeout(30);
+        }));
 builder.Services.AddScoped<SqlPortfolioContentProvider>();
 
 // Keep the Phase 1 provider active until the database is created and seeded.
