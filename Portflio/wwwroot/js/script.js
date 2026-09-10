@@ -17,9 +17,11 @@
       navTeam: "Team",
       navTestimonials: "Testimonials",
       navContact: "Contact",
+      whatsappTooltip: "Chat on WhatsApp",
+      whatsappAria: "Contact us on WhatsApp",
       heroEyebrow: "Software Engineering Team",
-      heroTitle: 'Intelligence-driven <span class="text-gradient-electric">software, engineered</span> with mastery<span class="gold-dot-accent">.</span>',
-      heroLead: "Engineering smart systems, modern web products, mobile experiences, and enterprise platforms that scale cleanly.",
+      heroTitle: 'Intelligence-driven <span class="text-gradient-electric">software, engineered</span> with mastery',
+      heroLead: "Engineering smart systems, modern web products, mobile experiences, and enterprise platforms that scale cleanly",
       typingPrefix: "We build",
       heroCtaWork: "Explore Our Work",
       heroCtaContact: "Contact Us",
@@ -32,41 +34,41 @@
       heroFeature3: "High Performance",
       heroFeature4: "Scalability",
       aboutEyebrow: "About LOGICORE",
-      aboutTitle: "We turn complex business logic into elegant digital products.",
-      aboutText: "Our team blends architecture, product thinking, clean interfaces, and reliable engineering to ship systems that teams trust every day.",
+      aboutTitle: "We turn complex business logic into elegant digital products",
+      aboutText: "Our team blends architecture, product thinking, clean interfaces, and reliable engineering to ship systems that teams trust every day",
       visionTitle: "Vision",
-      visionText: "Make intelligent software practical, maintainable, and valuable for ambitious teams.",
+      visionText: "Make intelligent software practical, maintainable, and valuable for ambitious teams",
       missionTitle: "Mission",
-      missionText: "Deliver polished applications backed by strong architecture and measurable quality.",
+      missionText: "Deliver polished applications backed by strong architecture and measurable quality",
       craftTitle: "Craft",
-      craftText: "Write readable code, design humane workflows, and document decisions that matter.",
+      craftText: "Write readable code, design humane workflows, and document decisions that matter",
       statProjects: "Projects Delivered",
       statSatisfaction: "Client Satisfaction",
       statQuality: "Quality Score",
       statResponse: "Average Response",
       servicesEyebrow: "Services",
-      servicesTitle: "Engineering services for modern digital teams.",
-      servicesIntro: "From product interfaces to cloud-backed enterprise systems, LOGICORE builds the pieces that keep organizations moving.",
+      servicesTitle: "Engineering services for modern digital teams",
+      servicesIntro: "From product interfaces to cloud-backed enterprise systems, LOGICORE builds the pieces that keep organizations moving",
       techEyebrow: "Technology Stack",
-      techTitle: "A sharp stack for reliable products.",
-      techIntro: "Filter the tools our team uses across backend, frontend, intelligent systems, and cloud delivery.",
+      techTitle: "A sharp stack for reliable products",
+      techIntro: "Filter the tools our team uses across backend, frontend, intelligent systems, and cloud delivery",
       portfolioEyebrow: "Portfolio",
-      portfolioTitle: "Selected work shaped for speed, clarity, and scale.",
-      portfolioIntro: "Explore LOGICORE project work across web, mobile, smart systems, and enterprise platforms.",
+      portfolioTitle: "Selected work shaped for speed, clarity, and scale",
+      portfolioIntro: "Explore LOGICORE project work across web, mobile, smart systems, and enterprise platforms",
       allProjects: "View all projects",
       teamEyebrow: "Team",
-      teamTitle: "Senior builders with product instincts.",
-      teamIntro: "A compact team covering architecture, experience design, backend systems, mobile delivery, and intelligent automation.",
+      teamTitle: "Senior builders with product instincts",
+      teamIntro: "A compact team covering architecture, experience design, backend systems, mobile delivery, and intelligent automation",
       testimonialsEyebrow: "Client Success",
-      testimonialsTitle: "Teams choose LOGICORE when software has to work beautifully.",
+      testimonialsTitle: "Teams choose LOGICORE when software has to work beautifully",
       noTestimonialsTitle: "No Testimonials Yet",
-      noTestimonials: "Client testimonials will appear here once added from the admin panel.",
+      noTestimonials: "Client testimonials will appear here once added from the admin panel",
       prevTestimonial: "Previous testimonial",
       nextTestimonial: "Next testimonial",
       testimonialDots: "Testimonial slides",
       contactEyebrow: "Contact",
-      contactTitle: "Tell us what you want to build.",
-      contactIntro: "Share your idea, platform, or business workflow. LOGICORE will help shape the path from concept to production.",
+      contactTitle: "Tell us what you want to build",
+      contactIntro: "Share your idea, platform, or business workflow. LOGICORE will help shape the path from concept to production",
       contactEmailTitle: "Email",
       contactLocationTitle: "Location",
       contactLocation: "Remote-first, serving global teams",
@@ -79,39 +81,39 @@
       formSubject: "Subject",
       formSubjectPlaceholder: "Project type or goal",
       formMessage: "Message",
-      formMessagePlaceholder: "Tell us about your idea, timeline, and what success looks like.",
+      formMessagePlaceholder: "Tell us about your idea, timeline, and what success looks like",
       formSubmit: "Send Message",
-      footerTagline: "Built with logic & code by LOGICORE.",
+      footerTagline: "Built with logic & code by LOGICORE",
       footerLinksLabel: "Footer quick links",
       socialLabel: "Social media",
-      footerRights: "All rights reserved.",
+      footerRights: "All rights reserved",
       backToTop: "Back to Top",
       projectDemo: "Live Demo",
       projectGithub: "Repository",
       viewProject: "View Project",
       all: "All",
-      noProjectsTitle: "Nothing here yet.",
-      noProjects: "No projects match this filter.",
-      nameError: "Please enter your name.",
-      emailError: "Please enter a valid email address.",
-      subjectError: "Please enter a subject.",
-      messageError: "Please enter a message of at least 20 characters.",
+      noProjectsTitle: "Nothing here yet",
+      noProjects: "No projects match this filter",
+      nameError: "Please enter your name",
+      emailError: "Please enter a valid email address",
+      subjectError: "Please enter a subject",
+      messageError: "Please enter a message of at least 20 characters",
       formSending: "Sending your message...",
-      formSuccess: "Thanks. Your message is ready for LOGICORE to review.",
-      formError: "We could not send your message. Please try again.",
+      formSuccess: "Thanks. Your message is ready for LOGICORE to review",
+      formError: "We could not send your message. Please try again",
       projectsBreadcrumb: "Projects",
-      projectsPageTitle: "Digital products built for real operational momentum.",
-      projectsPageIntro: "Explore the systems LOGICORE has shaped across customer experiences, field operations, intelligent automation, and enterprise platforms.",
+      projectsPageTitle: "Digital products built for real operational momentum",
+      projectsPageIntro: "Explore the systems LOGICORE has shaped across customer experiences, field operations, intelligent automation, and enterprise platforms",
       projectsCollection: "Project Collection",
-      projectsGalleryTitle: "Find the work most relevant to your next build.",
+      projectsGalleryTitle: "Find the work most relevant to your next build",
       projectsShown: "projects shown",
       projectCtaEyebrow: "Have a complex idea?",
-      projectCtaTitle: "Let’s turn it into a system people trust.",
+      projectCtaTitle: "Let’s turn it into a system people trust",
       projectClient: "Client",
       projectDuration: "Duration",
       projectDelivered: "Delivered",
       projectPreviewEyebrow: "Interface Preview",
-      projectPreviewTitle: "A closer look at the product experience.",
+      projectPreviewTitle: "A closer look at the product experience",
       previousImage: "Previous image",
       nextImage: "Next image",
       problemEyebrow: "The Challenge",
@@ -119,11 +121,11 @@
       solutionEyebrow: "The Response",
       solutionTitle: "Delivered Solution",
       featuresEyebrow: "Core Capabilities",
-      featuresTitle: "Key features designed around the work.",
+      featuresTitle: "Key features designed around the work",
       technologyUsedEyebrow: "Technology Used",
-      technologyUsedTitle: "A dependable stack behind the experience.",
+      technologyUsedTitle: "A dependable stack behind the experience",
       exploreMoreEyebrow: "Explore More",
-      exploreMoreTitle: "See how LOGICORE approaches other product challenges.",
+      exploreMoreTitle: "See how LOGICORE approaches other product challenges",
       backToProjects: "Back to all projects"
     },
     ar: {
@@ -141,9 +143,11 @@
       navTeam: "الفريق",
       navTestimonials: "آراء العملاء",
       navContact: "تواصل",
+      whatsappTooltip: "تواصل عبر واتساب",
+      whatsappAria: "تواصل معنا عبر واتساب",
       heroEyebrow: "فريق هندسة برمجيات",
-      heroTitle: 'برمجيات ذكية <span class="text-gradient-electric">مصممة بإتقان</span> هندسي<span class="gold-dot-accent">.</span>',
-      heroLead: "تصميم أنظمة ذكية ومنتجات ويب حديثة وتجارب جوال ومنصات مؤسسية قابلة للتوسع بثبات.",
+      heroTitle: 'برمجيات ذكية <span class="text-gradient-electric">مصممة بإتقان</span> هندسي',
+      heroLead: "تصميم أنظمة ذكية ومنتجات ويب حديثة وتجارب جوال ومنصات مؤسسية قابلة للتوسع بثبات",
       typingPrefix: "نطوّر",
       heroCtaWork: "استكشف أعمالنا",
       heroCtaContact: "تواصل معنا",
@@ -156,41 +160,41 @@
       heroFeature3: "أداء عالي",
       heroFeature4: "قابلية للتوسع",
       aboutEyebrow: "عن LOGICORE",
-      aboutTitle: "نحوّل منطق الأعمال المعقد إلى منتجات رقمية أنيقة.",
-      aboutText: "يمزج فريقنا بين الهندسة المعمارية والتفكير المنتج والواجهات النظيفة والتنفيذ الموثوق لإطلاق أنظمة تعتمد عليها الفرق يومياً.",
+      aboutTitle: "نحوّل منطق الأعمال المعقد إلى منتجات رقمية أنيقة",
+      aboutText: "يمزج فريقنا بين الهندسة المعمارية والتفكير المنتج والواجهات النظيفة والتنفيذ الموثوق لإطلاق أنظمة تعتمد عليها الفرق يومياً",
       visionTitle: "الرؤية",
-      visionText: "جعل البرمجيات الذكية عملية وقابلة للصيانة وذات قيمة للفرق الطموحة.",
+      visionText: "جعل البرمجيات الذكية عملية وقابلة للصيانة وذات قيمة للفرق الطموحة",
       missionTitle: "الرسالة",
-      missionText: "تسليم تطبيقات مصقولة مدعومة ببنية قوية وجودة قابلة للقياس.",
+      missionText: "تسليم تطبيقات مصقولة مدعومة ببنية قوية وجودة قابلة للقياس",
       craftTitle: "الحرفة",
-      craftText: "نكتب كوداً واضحاً ونصمم تجارب إنسانية ونوثق القرارات المهمة.",
+      craftText: "نكتب كوداً واضحاً ونصمم تجارب إنسانية ونوثق القرارات المهمة",
       statProjects: "مشروعاً منجزاً",
       statSatisfaction: "رضا العملاء",
       statQuality: "مؤشر الجودة",
       statResponse: "متوسط الاستجابة",
       servicesEyebrow: "الخدمات",
-      servicesTitle: "خدمات هندسية للفرق الرقمية الحديثة.",
-      servicesIntro: "من واجهات المنتجات إلى الأنظمة المؤسسية السحابية، تبني LOGICORE المكونات التي تحافظ على حركة المؤسسات.",
+      servicesTitle: "خدمات هندسية للفرق الرقمية الحديثة",
+      servicesIntro: "من واجهات المنتجات إلى الأنظمة المؤسسية السحابية، تبني LOGICORE المكونات التي تحافظ على حركة المؤسسات",
       techEyebrow: "التقنيات",
-      techTitle: "مجموعة تقنية دقيقة لمنتجات موثوقة.",
-      techIntro: "صفّ أدوات الفريق في الخلفية والواجهة والأنظمة الذكية والتسليم السحابي.",
+      techTitle: "مجموعة تقنية دقيقة لمنتجات موثوقة",
+      techIntro: "صفّ أدوات الفريق في الخلفية والواجهة والأنظمة الذكية والتسليم السحابي",
       portfolioEyebrow: "الأعمال",
-      portfolioTitle: "أعمال مختارة مصممة للسرعة والوضوح والتوسع.",
-      portfolioIntro: "استكشف أعمال LOGICORE في الويب والجوال والأنظمة الذكية والمنصات المؤسسية.",
+      portfolioTitle: "أعمال مختارة مصممة للسرعة والوضوح والتوسع",
+      portfolioIntro: "استكشف أعمال LOGICORE في الويب والجوال والأنظمة الذكية والمنصات المؤسسية",
       allProjects: "عرض جميع المشاريع",
       teamEyebrow: "الفريق",
-      teamTitle: "خبراء بناء برمجيات بحس منتج.",
-      teamIntro: "فريق صغير يغطي البنية وتصميم التجربة وأنظمة الخلفية وتطبيقات الجوال والأتمتة الذكية.",
+      teamTitle: "خبراء بناء برمجيات بحس منتج",
+      teamIntro: "فريق صغير يغطي البنية وتصميم التجربة وأنظمة الخلفية وتطبيقات الجوال والأتمتة الذكية",
       testimonialsEyebrow: "نجاح العملاء",
-      testimonialsTitle: "تختار الفرق LOGICORE عندما يجب أن تعمل البرمجيات بجمال وثبات.",
+      testimonialsTitle: "تختار الفرق LOGICORE عندما يجب أن تعمل البرمجيات بجمال وثبات",
       noTestimonialsTitle: "لا تتوفر شهادات حالياً",
-      noTestimonials: "ستظهر شهادات وآراء العملاء هنا فور إضافتها من لوحة الإدارة.",
+      noTestimonials: "ستظهر شهادات وآراء العملاء هنا فور إضافتها من لوحة الإدارة",
       prevTestimonial: "الرأي السابق",
       nextTestimonial: "الرأي التالي",
       testimonialDots: "شرائح آراء العملاء",
       contactEyebrow: "تواصل",
-      contactTitle: "أخبرنا بما تريد بناءه.",
-      contactIntro: "شارك فكرتك أو منصتك أو سير عملك. ستساعدك LOGICORE في رسم الطريق من الفكرة إلى الإنتاج.",
+      contactTitle: "أخبرنا بما تريد بناءه",
+      contactIntro: "شارك فكرتك أو منصتك أو سير عملك. ستساعدك LOGICORE في رسم الطريق من الفكرة إلى الإنتاج",
       contactEmailTitle: "البريد",
       contactLocationTitle: "الموقع",
       contactLocation: "فريق مرن يخدم فرقاً عالمية",
@@ -203,39 +207,39 @@
       formSubject: "الموضوع",
       formSubjectPlaceholder: "نوع المشروع أو الهدف",
       formMessage: "الرسالة",
-      formMessagePlaceholder: "أخبرنا عن فكرتك والجدول الزمني وشكل النجاح المطلوب.",
+      formMessagePlaceholder: "أخبرنا عن فكرتك والجدول الزمني وشكل النجاح المطلوب",
       formSubmit: "إرسال الرسالة",
-      footerTagline: "بُني بالمنطق والكود من LOGICORE.",
+      footerTagline: "بُني بالمنطق والكود من LOGICORE",
       footerLinksLabel: "روابط سريعة في التذييل",
       socialLabel: "وسائل التواصل",
-      footerRights: "جميع الحقوق محفوظة.",
+      footerRights: "جميع الحقوق محفوظة",
       backToTop: "العودة للأعلى",
       projectDemo: "عرض مباشر",
       projectGithub: "المستودع",
       viewProject: "عرض المشروع",
       all: "الكل",
-      noProjectsTitle: "لا توجد نتائج حالياً.",
-      noProjects: "لا توجد مشاريع مطابقة لهذا التصنيف.",
-      nameError: "يرجى إدخال الاسم.",
-      emailError: "يرجى إدخال بريد إلكتروني صحيح.",
-      subjectError: "يرجى إدخال الموضوع.",
-      messageError: "يرجى إدخال رسالة لا تقل عن 20 حرفاً.",
+      noProjectsTitle: "لا توجد نتائج حالياً",
+      noProjects: "لا توجد مشاريع مطابقة لهذا التصنيف",
+      nameError: "يرجى إدخال الاسم",
+      emailError: "يرجى إدخال بريد إلكتروني صحيح",
+      subjectError: "يرجى إدخال الموضوع",
+      messageError: "يرجى إدخال رسالة لا تقل عن 20 حرفاً",
       formSending: "جارٍ إرسال رسالتك...",
-      formSuccess: "شكراً لك. رسالتك جاهزة لمراجعة LOGICORE.",
-      formError: "تعذر إرسال رسالتك. يرجى المحاولة مرة أخرى.",
+      formSuccess: "شكراً لك. رسالتك جاهزة لمراجعة LOGICORE",
+      formError: "تعذر إرسال رسالتك. يرجى المحاولة مرة أخرى",
       projectsBreadcrumb: "المشاريع",
-      projectsPageTitle: "منتجات رقمية صُممت لدفع العمل الحقيقي إلى الأمام.",
-      projectsPageIntro: "استكشف الأنظمة التي صممتها LOGICORE لتجارب العملاء والعمليات الميدانية والأتمتة الذكية والمنصات المؤسسية.",
+      projectsPageTitle: "منتجات رقمية صُممت لدفع العمل الحقيقي إلى الأمام",
+      projectsPageIntro: "استكشف الأنظمة التي صممتها LOGICORE لتجارب العملاء والعمليات الميدانية والأتمتة الذكية والمنصات المؤسسية",
       projectsCollection: "مجموعة المشاريع",
-      projectsGalleryTitle: "اعثر على العمل الأقرب إلى مشروعك القادم.",
+      projectsGalleryTitle: "اعثر على العمل الأقرب إلى مشروعك القادم",
       projectsShown: "مشاريع معروضة",
       projectCtaEyebrow: "لديك فكرة معقدة؟",
-      projectCtaTitle: "لنحولها إلى نظام يثق به الناس.",
+      projectCtaTitle: "لنحولها إلى نظام يثق به الناس",
       projectClient: "العميل",
       projectDuration: "المدة",
       projectDelivered: "تاريخ التسليم",
       projectPreviewEyebrow: "معاينة الواجهة",
-      projectPreviewTitle: "نظرة أقرب إلى تجربة المنتج.",
+      projectPreviewTitle: "نظرة أقرب إلى تجربة المنتج",
       previousImage: "الصورة السابقة",
       nextImage: "الصورة التالية",
       problemEyebrow: "التحدي",
@@ -243,11 +247,11 @@
       solutionEyebrow: "الاستجابة",
       solutionTitle: "الحل المقدم",
       featuresEyebrow: "القدرات الأساسية",
-      featuresTitle: "ميزات رئيسية مصممة حول العمل.",
+      featuresTitle: "ميزات رئيسية مصممة حول العمل",
       technologyUsedEyebrow: "التقنيات المستخدمة",
-      technologyUsedTitle: "مجموعة تقنية موثوقة خلف التجربة.",
+      technologyUsedTitle: "مجموعة تقنية موثوقة خلف التجربة",
       exploreMoreEyebrow: "استكشف المزيد",
-      exploreMoreTitle: "شاهد كيف تتعامل LOGICORE مع تحديات المنتجات الأخرى.",
+      exploreMoreTitle: "شاهد كيف تتعامل LOGICORE مع تحديات المنتجات الأخرى",
       backToProjects: "العودة إلى جميع المشاريع"
     }
   };
@@ -259,7 +263,7 @@
 
   const state = {
     lang: localStorage.getItem("logicore-lang") || "en",
-    theme: localStorage.getItem("logicore-theme") || "dark",
+    theme: sessionStorage.getItem("logicore-theme") || "dark",
     typingWordIndex: 0,
     typingCharIndex: 0,
     typingDeleting: false,
@@ -272,10 +276,14 @@
 
   function applyTheme() {
     document.documentElement.dataset.theme = state.theme;
-    localStorage.setItem("logicore-theme", state.theme);
+    sessionStorage.setItem("logicore-theme", state.theme);
+    try {
+      localStorage.removeItem("logicore-theme");
+    } catch (e) {}
+
     const metaTheme = $('meta[name="theme-color"]');
     if (metaTheme) {
-      metaTheme.content = state.theme === "dark" ? "#0F172A" : "#F5F0E6";
+      metaTheme.content = state.theme === "dark" ? "#040814" : "#F5F0E6";
     }
   }
 
@@ -621,7 +629,15 @@
 
       submitting = true;
       updateSubmitState();
-      if (status) status.textContent = t("formSending");
+      if (status) {
+        status.innerHTML = `
+          <div class="contact-sending-state">
+            <span class="sending-spinner" aria-hidden="true"></span>
+            <span class="loc-ar">جارٍ إرسال رسالتك...</span>
+            <span class="loc-en">Sending your message...</span>
+          </div>
+        `;
+      }
 
       try {
         const response = await fetch(form.action, {
@@ -638,14 +654,50 @@
           throw new Error(payload?.message || t("formError"));
         }
 
-        if (status) status.textContent = payload.message || t("formSuccess");
+        if (status) {
+          status.innerHTML = `
+            <div id="contact-success-message" class="contact-success-message contact-success-card" role="status" aria-live="polite">
+              <div class="success-icon-box">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="success-card-content">
+                <h3 class="success-heading">
+                  <span class="loc-ar">تم إرسال رسالتك بنجاح</span>
+                  <span class="loc-en">Your message has been sent successfully</span>
+                </h3>
+                <p class="success-message">
+                  <span class="loc-ar">شكرًا لتواصلك مع فريق LogiCore. سنراجع رسالتك ونتواصل معك عند الحاجة.</span>
+                  <span class="loc-en">Thank you for contacting the LogiCore team. We will review your message and reach out if needed.</span>
+                </p>
+              </div>
+            </div>
+          `;
+        }
         form.reset();
         fields.forEach((field) => field.removeAttribute("aria-invalid"));
       } catch (error) {
         if (status) {
-          status.textContent = error instanceof Error && error.message
-            ? error.message
-            : t("formError");
+          const isFetchErr = error instanceof Error && (error.message.includes("fetch") || error.message.includes("network") || error.message.includes("Network"));
+          const errText = error instanceof Error && error.message && !isFetchErr ? error.message : null;
+          status.innerHTML = `
+            <div class="contact-error-card">
+              <div class="error-icon-box">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+              </div>
+              <div class="error-card-content">
+                ${errText ? `<span>${errText}</span>` : `
+                  <span class="loc-ar">تعذر الاتصال بالخادم. يرجى التأكد من تشغيل المشروع ثم المحاولة مجدداً.</span>
+                  <span class="loc-en">Could not connect to the server. Please ensure the project is running and try again.</span>
+                `}
+              </div>
+            </div>
+          `;
         }
       } finally {
         submitting = false;

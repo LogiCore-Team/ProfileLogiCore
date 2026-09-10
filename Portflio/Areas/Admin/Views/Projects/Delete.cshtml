@@ -19,10 +19,10 @@
         </div>
     </div>
 
-    <dl class="detail-list mb-4 bg-light p-3 rounded-3 border">
-        <dt>اسم المشروع</dt><dd class="fw-bold text-dark">@Model.TitleAr</dd>
+    <dl class="detail-list mb-4 nested-item p-3 rounded-3 border">
+        <dt>اسم المشروع</dt><dd class="fw-bold">@Model.TitleAr</dd>
         <dt>اسم العميل</dt><dd>@(string.IsNullOrWhiteSpace(Model.ClientName) ? "—" : Model.ClientName)</dd>
-        <dt>التصنيف</dt><dd><span class="badge bg-white text-dark border">@Model.Category</span></dd>
+        <dt>التصنيف</dt><dd><span class="badge badge-tech">@Model.Category</span></dd>
     </dl>
 
     <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-flex gap-2">

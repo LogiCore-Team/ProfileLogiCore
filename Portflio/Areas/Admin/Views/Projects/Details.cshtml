@@ -25,7 +25,7 @@
     </div>
     <dl class="detail-list">
         <dt>اسم العميل</dt><dd class="fw-semibold">@(string.IsNullOrWhiteSpace(Model.ClientName) ? "—" : Model.ClientName)</dd>
-        <dt>التصنيف</dt><dd><span class="badge bg-light text-dark border">@Model.Category</span></dd>
+        <dt>التصنيف</dt><dd><span class="badge badge-tech">@Model.Category</span></dd>
         <dt>تاريخ الإنشاء</dt><dd>@Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</dd>
         <dt>حالة التمييز</dt>
         <dd>
@@ -84,12 +84,12 @@
     <div class="col-lg-6">
         <div class="admin-card h-100">
             <div class="admin-card-header mx--3 mt--3 mb-3 border-0 bg-transparent p-0">
-                <h3 class="h5 fw-bold text-dark d-flex align-items-center gap-2">
+                <h3 class="h5 fw-bold d-flex align-items-center gap-2">
                     <i class="bi bi-journal-text text-primary"></i>الوصف بالإنجليزية (EN)
                 </h3>
             </div>
             <p class="text-muted fw-medium fs-7 mb-2">@Model.ShortDescriptionEn</p>
-            <p class="mb-0 text-dark lh-base">@Model.FullDescriptionEn</p>
+            <p class="mb-0 lh-base">@Model.FullDescriptionEn</p>
         </div>
     </div>
     <div class="col-lg-6" dir="rtl">
@@ -101,7 +101,7 @@
     </div>
     <div class="col-lg-6">
         <div class="admin-card h-100">
-            <h3 class="h5 fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+            <h3 class="h5 fw-bold mb-3 d-flex align-items-center gap-2">
                 <i class="bi bi-list-check text-success"></i>الميزات (@Model.Features.Count)
             </h3>
             <ul class="list-group list-group-flush border-0">
@@ -114,7 +114,7 @@
     </div>
     <div class="col-lg-6">
         <div class="admin-card h-100">
-            <h3 class="h5 fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+            <h3 class="h5 fw-bold mb-3 d-flex align-items-center gap-2">
                 <i class="bi bi-images text-warning"></i>الوسائط (@Model.Media.Count)
             </h3>
             <ul class="list-group list-group-flush border-0">

@@ -5,7 +5,7 @@
     ViewData["Page"] = "projects";
 }
 
-<main id="main">
+<main id="main" class="projects-page">
     <section class="page-hero section brand-hero-page" aria-labelledby="projects-page-title">
         <div class="hero-grid-pattern" aria-hidden="true"></div>
         <div class="page-hero-grid shell">
@@ -17,9 +17,9 @@
                 </nav>
                 <p class="eyebrow" data-i18n="portfolioEyebrow">Portfolio</p>
                 <h1 id="projects-page-title" class="gradient-heading" data-i18n="projectsPageTitle">
-                    منتجات رقمية صُممت لدفع العمل الحقيقي إلى الأمام<span class="gold-dot-accent">.</span>
+                    منتجات رقمية صُممت لدفع العمل الحقيقي إلى الأمام
                 </h1>
-                <p class="page-lead" data-i18n="projectsPageIntro">Explore the systems LOGICORE has shaped across customer experiences, field operations, intelligent automation, and enterprise platforms.</p>
+                <p class="page-lead" data-i18n="projectsPageIntro">Explore the systems LOGICORE has shaped across customer experiences, field operations, intelligent automation, and enterprise platforms</p>
             </div>
             <div class="page-hero-signal reveal glass-card-tech" aria-hidden="true">
                 <span class="signal-index electric-text">@Model.Projects.Count</span>
@@ -33,7 +33,7 @@
         <div class="shell section-head projects-gallery-head reveal">
             <div>
                 <p class="eyebrow" data-i18n="projectsCollection">Project Collection</p>
-                <h2 id="gallery-title" class="gradient-heading" data-i18n="projectsGalleryTitle">Find the work most relevant to your next build.</h2>
+                <h2 id="gallery-title" class="gradient-heading" data-i18n="projectsGalleryTitle">Find the work most relevant to your next build</h2>
             </div>
             <p class="results-count">
                 <strong data-results-count class="electric-text">@Model.Projects.Count</strong>

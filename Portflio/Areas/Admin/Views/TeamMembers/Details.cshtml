@@ -20,8 +20,8 @@
         <h2 class="h6 mb-0 text-uppercase tracking-wider text-muted fw-bold">بيانات عضو الفريق</h2>
     </div>
     <dl class="detail-list">
-        <dt>الدور بالإنجليزية (EN)</dt><dd class="fw-semibold text-dark" dir="ltr">@Model.RoleEn</dd>
-        <dt>الدور بالعربية (AR)</dt><dd class="fw-semibold text-dark">@Model.RoleAr</dd>
+        <dt>الدور بالإنجليزية (EN)</dt><dd class="fw-semibold" dir="ltr">@Model.RoleEn</dd>
+        <dt>الدور بالعربية (AR)</dt><dd class="fw-semibold">@Model.RoleAr</dd>
         <dt>قائمة المهارات</dt>
         <dd>
             @if (!string.IsNullOrWhiteSpace(Model.SkillsCsv))
@@ -29,7 +29,7 @@
                 <div class="d-flex flex-wrap gap-1">
                     @foreach (var skill in Model.SkillsCsv.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
                     {
-                        <span class="badge bg-light text-dark border">@skill</span>
+                        <span class="badge badge-tech">@skill</span>
                     }
                 </div>
             }
@@ -71,7 +71,7 @@
                 <span class="text-muted">—</span>
             }
         </dd>
-        <dt>ترتيب العرض</dt><dd><span class="badge bg-light text-dark border">#@Model.DisplayOrder</span></dd>
+        <dt>ترتيب العرض</dt><dd><span class="badge badge-tech">#@Model.DisplayOrder</span></dd>
         <dt>الحالة</dt>
         <dd>
             <span class="badge badge-pill @(Model.IsActive ? "badge-active" : "badge-hidden")">
