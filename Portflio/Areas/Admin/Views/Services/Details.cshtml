@@ -20,8 +20,8 @@
         <h2 class="h6 mb-0 text-uppercase tracking-wider text-muted fw-bold">بيانات الخدمة</h2>
     </div>
     <dl class="detail-list">
-        <dt>الوصف بالإنجليزية (EN)</dt><dd class="text-dark" dir="ltr">@Model.DescriptionEn</dd>
-        <dt>الوصف بالعربية (AR)</dt><dd class="text-dark">@Model.DescriptionAr</dd>
+        <dt>الوصف بالإنجليزية (EN)</dt><dd dir="ltr">@Model.DescriptionEn</dd>
+        <dt>الوصف بالعربية (AR)</dt><dd>@Model.DescriptionAr</dd>
         <dt>فئة الأيقونة</dt>
         <dd>
             @if (!string.IsNullOrWhiteSpace(Model.IconClass))
@@ -33,7 +33,7 @@
                 <span class="text-muted">—</span>
             }
         </dd>
-        <dt>ترتيب العرض</dt><dd><span class="badge bg-light text-dark border">#@Model.DisplayOrder</span></dd>
+        <dt>ترتيب العرض</dt><dd><span class="badge badge-tech">#@Model.DisplayOrder</span></dd>
         <dt>الحالة</dt>
         <dd>
             <span class="badge badge-pill @(Model.IsActive ? "badge-active" : "badge-hidden")">

@@ -11,7 +11,12 @@
     <script>
         (() => {
             const root = document.documentElement;
-            const theme = localStorage.getItem("logicore-theme") === "light" ? "light" : "dark";
+            try {
+                if (localStorage.getItem("logicore-theme")) {
+                    localStorage.removeItem("logicore-theme");
+                }
+            } catch (e) {}
+            const theme = sessionStorage.getItem("logicore-theme") === "light" ? "light" : "dark";
             const language = localStorage.getItem("logicore-lang") === "en" ? "en" : "ar";
 
             root.dataset.theme = theme;
@@ -178,12 +183,15 @@
                 root.dataset.bsTheme = normalizedTheme;
                 root.classList.toggle("dark-theme", normalizedTheme === "dark");
                 root.classList.toggle("light-theme", normalizedTheme === "light");
-                localStorage.setItem("logicore-theme", normalizedTheme);
+                sessionStorage.setItem("logicore-theme", normalizedTheme);
+                try {
+                    localStorage.removeItem("logicore-theme");
+                } catch (e) {}
                 themeToggle?.setAttribute("aria-pressed", String(normalizedTheme === "dark"));
 
                 const metaTheme = document.querySelector('meta[name="theme-color"]');
                 if (metaTheme) {
-                    metaTheme.content = normalizedTheme === "dark" ? "#040814" : "#F8FAFC";
+                    metaTheme.content = normalizedTheme === "dark" ? "#040814" : "#F5F0E6";
                 }
             };
 
@@ -217,7 +225,7 @@
                 languageToggle?.setAttribute("aria-pressed", String(normalizedLanguage === "en"));
             };
 
-            applyTheme(localStorage.getItem("logicore-theme") || "dark");
+            applyTheme(sessionStorage.getItem("logicore-theme") || "dark");
             applyLanguage(localStorage.getItem("logicore-lang") || "ar");
 
             themeToggle?.addEventListener("click", () => {

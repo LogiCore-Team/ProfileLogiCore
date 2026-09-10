@@ -5,7 +5,7 @@
     ViewData["Page"] = "projects";
 }
 
-<main id="main">
+<main id="main" class="project-details-page">
     <section class="project-detail-hero section brand-hero-page" aria-labelledby="project-title">
         <div class="hero-grid-pattern" aria-hidden="true"></div>
         <div class="shell">
@@ -27,10 +27,7 @@
                         {
                             <a class="btn primary btn-hero-primary" href="@Model.LiveDemoUrl" target="_blank" rel="noreferrer" data-i18n="projectDemo">Live Demo</a>
                         }
-                        @if (!string.IsNullOrWhiteSpace(Model.RepositoryUrl))
-                        {
-                            <a class="btn ghost btn-hero-ghost" href="@Model.RepositoryUrl" target="_blank" rel="noreferrer" data-i18n="projectGithub">Repository</a>
-                        }
+                        
                     </div>
                 </div>
 
@@ -52,12 +49,14 @@
         </div>
     </section>
 
-    <section class="project-gallery-section" aria-labelledby="gallery-heading">
+    @if (Model.Media != null && Model.Media.Count > 0)
+    {
+        <section class="project-gallery-section" aria-labelledby="gallery-heading">
         <div class="shell">
             <div class="gallery-heading reveal">
                 <div>
                     <p class="eyebrow" data-i18n="projectPreviewEyebrow">Interface Preview</p>
-                    <h2 id="gallery-heading" class="gradient-heading" data-i18n="projectPreviewTitle">A closer look at the product experience.</h2>
+                    <h2 id="gallery-heading" class="gradient-heading" data-i18n="projectPreviewTitle">A closer look at the product experience</h2>
                 </div>
                 <p class="gallery-counter" aria-live="polite">
                     <span data-gallery-current class="electric-text">01</span>
@@ -116,6 +115,7 @@
             </div>
         </div>
     </section>
+}
 
     <section class="section case-study-section">
         <div class="shell case-study-grid">
@@ -141,7 +141,7 @@
     <section class="section project-features-section" aria-labelledby="features-title">
         <div class="shell section-head reveal">
             <p class="eyebrow" data-i18n="featuresEyebrow">Core Capabilities</p>
-            <h2 id="features-title" class="gradient-heading" data-i18n="featuresTitle">Key features designed around the work.</h2>
+            <h2 id="features-title" class="gradient-heading" data-i18n="featuresTitle">Key features designed around the work</h2>
         </div>
         <div class="shell feature-grid">
             @foreach (var feature in Model.KeyFeatures)
@@ -159,7 +159,7 @@
         <div class="shell project-tech-panel reveal glass-card-tech">
             <div>
                 <p class="eyebrow" data-i18n="technologyUsedEyebrow">Technology Used</p>
-                <h2 id="technology-title" class="gradient-heading" data-i18n="technologyUsedTitle">A dependable stack behind the experience.</h2>
+                <h2 id="technology-title" class="gradient-heading" data-i18n="technologyUsedTitle">A dependable stack behind the experience</h2>
             </div>
             <div class="project-tech-list">
                 @foreach (var technology in Model.Technologies)
@@ -177,7 +177,7 @@
         <div class="shell project-next reveal glass-card-tech">
             <div>
                 <p class="eyebrow" data-i18n="exploreMoreEyebrow">Explore More</p>
-                <h2 class="gradient-heading" data-i18n="exploreMoreTitle">See how LOGICORE approaches other product challenges.</h2>
+                <h2 class="gradient-heading" data-i18n="exploreMoreTitle">See how LOGICORE approaches other product challenges</h2>
             </div>
             <a class="btn primary btn-hero-primary" asp-controller="Projects" asp-action="Index" data-i18n="backToProjects">Back to all projects</a>
         </div>
