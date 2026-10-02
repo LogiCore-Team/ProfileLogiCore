@@ -14,7 +14,7 @@ namespace Portflio.Controllers
         private readonly IPortfolioContentProvider _contentProvider;
         private readonly ApplicationDbContext _dbContext;
 
-        public HomeController(
+        public privacyController(
             ILogger<HomeController> logger,
             IPortfolioContentProvider contentProvider,
             ApplicationDbContext dbContext)
