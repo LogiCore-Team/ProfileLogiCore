@@ -8,7 +8,7 @@ using Portflio.Services;
 
 namespace Portflio.Controllers
 {
-    public class HomeController : Controller
+    public class privacyController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IPortfolioContentProvider _contentProvider;
