@@ -26,7 +26,7 @@ namespace Portflio.Controllers
 
         public IActionResult Index()
         {
-            return View(_contentProvider.GetHomePage());
+            return View();
         }
 
        
