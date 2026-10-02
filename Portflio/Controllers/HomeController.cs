@@ -28,6 +28,10 @@ namespace Portflio.Controllers
         {
             return View(_contentProvider.GetHomePage());
         }
+        public IActionResult privacy()
+        {
+            return View(_contentProvider.GetHomePage());
+        }
 
         public IActionResult Privacy()
         {
